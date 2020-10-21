@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sponsorMapper">
+	
+	<resultMap id="resultThumb" type="Sponsor">
+		<result property="sOriginal" column="s_Original" />
+		<result property="sRename" column="s_Rename" />
+	</resultMap>
+	
+	<resultMap type="hashMap" id="resultContent">
+		<result property="content" column="s_content" jdbcType="CLOB" javaType="java.lang.String"/>
+	</resultMap>
+	
+	<select id="selectList" resultType="Sponsor" parameterType="com.kh.runningdog.sponsor.model.vo.SponsorPage">
+		<![CDATA[
+		select *
+		from (select rank() over (order by s_chk, s_num desc) rnum, s_num, s_id, s_title, s_summary, s_content, 
+					 s_date, s_amount, s_current, s_original, s_rename, s_count, s_chk
+		      from sponsor)
+		where rnum >= #{ startRow } and rnum <= #{ endRow }
+		]]>
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="Sponsor">
+		select * from sponsor where s_num = #{ snum }
+	</select>
+	
+	<select id="selectContent" parameterType="int" resultMap="resultContent">
+		select s_content from sponsor where s_num = #{ snum }
+	</select>
+	
+	<select id="selectListCount" resultType="_int">
+		select count(*) from sponsor
+	</select>
+	
+	<select id="selectSNum" resultType="_int">
+		select max(s_num) from sponsor
+	</select>
+	
+	<select id="selectThumb" resultMap="resultThumb">
+		select s_Original, s_Rename
+		from sponsor
+		where s_num in
+		<foreach collection="array" item="arr" open="(" close=")" separator=",">
+			#{ arr }
+		</foreach>
+	</select>
+	
+	<select id="selectSearch" resultType="Sponsor" parameterType="hashmap">
+		select *
+		from (select rank() over (order by s_chk, s_num desc) rnum, s_num, s_id, s_title, s_summary, s_content, 
+					 s_date, s_amount, s_current, s_original, s_rename, s_count, s_chk
+			  from sponsor where
+		<if test='selected.equals("title")'>
+			s_title like '%' || #{ keyword } || '%')
+		</if>
+		<if test='selected.equals("content")'>
+			s_content like '%' || #{ keyword } || '%')
+		</if>
+		<![CDATA[where rnum >= #{ startRow } and rnum <= #{ endRow }]]>
+	</select>
+	
+	<select id="selectSponsorPre" resultType="Integer" parameterType="int">
+		select lagnum from (select s_num, lag(s_num) over(order by s_num) lagnum from sponsor) where s_num = #{ sNum }
+	</select>
+	
+	<select id="selectSponsorNext" resultType="Integer" parameterType="int">
+		select leadnum from (select s_num, lead(s_num) over(order by s_num) leadnum from sponsor) where s_num = #{ sNum }
+	</select>
+	
+	<select id="selectProgress" resultType="Sponsor" parameterType="com.kh.runningdog.sponsor.model.vo.SponsorPage">
+		<![CDATA[
+		select *
+		from (select rank() over (order by s_num desc) rnum, s_num, s_id, s_title, s_summary,
+							 s_content, s_count, s_date, s_amount, s_current, s_original, s_rename
+			  from sponsor
+		      where s_current < s_amount)
+		where rnum >= #{ startRow } and rnum <= #{ endRow }
+		]]>
+	</select>
+	
+	<select id="selectComple" resultType="Sponsor" parameterType="com.kh.runningdog.sponsor.model.vo.SponsorPage">
+		<![CDATA[
+		select *
+		from (select rank() over (order by s_num desc) rnum, s_num, s_id, s_title, s_summary,
+							 s_content, s_count, s_date, s_amount, s_current, s_original, s_rename
+			  from sponsor
+		      where s_current >= s_amount)
+		where rnum >= #{ startRow } and rnum <= #{ endRow }
+		]]>
+	</select>
+	
+	<select id="selectListCountP" resultType="_int">
+		<![CDATA[select count(*) from sponsor where s_current < s_amount]]>
+	</select>
+	
+	<select id="selectListCountC" resultType="_int">
+		select count(*) from sponsor where s_current >= s_amount
+	</select>
+	
+	<select id="selectListCountSelect" resultType="_int" parameterType="hashMap">
+		select count(*) from sponsor where
+		<if test='selected.equals("title")'>
+			s_title like '%' || #{ keyword } || '%'
+		</if>
+		<if test='selected.equals("content")'>
+			s_content like '%' || #{ keyword } || '%'
+		</if>
+	</select>
+	
+	<insert id="insertSponsor" parameterType="Sponsor">
+		insert into sponsor
+		values (sponsor_num.nextval, #{ sId }, #{ sTitle }, #{ sSummary },
+				#{ sContent }, 0, sysdate, #{ sAmount }, 0, #{ sChk }, #{ sOriginal }, #{ sRename })
+	</insert>
+	
+	<update id="updateSponsor" parameterType="Sponsor">
+		update sponsor
+		set s_title = #{ sTitle }, s_summary = #{ sSummary }, s_content = #{ sContent },
+				s_amount = #{ sAmount }, s_original = #{ sOriginal }, s_rename = #{ sRename }
+		where s_num = #{ sNum }
+	</update>
+	
+	<update id="updateSponsorCash" parameterType="Sponsor">
+		update sponsor
+		set s_current = (select s_current from sponsor where s_num = #{ sNum }) + #{ sCurrent }
+		where s_num = #{ sNum }
+	</update>
+	
+	<update id="updateSponsorReadCount" parameterType="int">
+		update sponsor
+		set s_count = s_count + 1
+		where s_num = #{ sNum }
+	</update>
+	
+	<update id="updateComplete" parameterType="int">
+		update sponsor
+		set s_chk = 'y'
+		where s_num = #{ sNum }
+	</update>
+	
+	<delete id="deleteSponsor">
+		delete from sponsor where s_num in
+		<foreach item="arr" collection="array" open="(" close=")" separator=",">
+			#{ arr }
+		</foreach>
+	</delete>
+	
+	
+	<!-- sponsorList -->
+	<insert id="insertSponsorList" parameterType="SponsorList">
+		insert into sponsorlist
+		values (#{ spDate }, #{ spName }, #{ spEmail }, #{ spPhone }, #{ spSnumber }, #{ spCash }, #{ spEch },
+				#{ spPch }, #{ spWay }, #{ spBankbook }, #{ spRealCash }, #{ sNum })
+	</insert>
+	
+	<select id="selectSponsorListOne" parameterType="String" resultType="SponsorList">
+		select sp_cash, sp_way from sponsorlist where sp_date = #{ spdate }
+	</select>
+</mapper>

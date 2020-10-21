@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- DataSource 등록 -->
+	<bean id="realDataSource"
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<property name="username" value="runningdog"/>
+		<property name="password" value="runningdog"/>
+	</bean>
+	<!-- log4jdbc-remix 관련 dataSource처리  -->
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="realDataSource" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="[SQL] " />
+			</bean>
+		</property>
+	</bean>
+
+	<!-- Spring과  MyBatis 연동 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+		<property name="dataSource" ref="dataSource" /> 
+		<!-- 로그 출력시에는 dataSource 로, 로그 출력 안되게 할때는 realDataSource 로 바꿈 -->
+	</bean>
+
+	<bean class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSession"></constructor-arg>
+	</bean>
+	
+	<!-- 트랜잭션 관리 설정 -->
+	<bean
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		id="transactionManager">
+		<property name="dataSource" ref="realDataSource"></property>
+	</bean>	
+	
+	<!-- service 에서 필요한 시점에 commit / rollback 이 구동되게 aop 설정 처리 -->
+	<tx:advice transaction-manager="transactionManager" id="txAdvice">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true" rollback-for="Exception" />
+			<tx:method name="insert*" rollback-for="Exception" />
+			<tx:method name="update*" rollback-for="Exception" />
+			<tx:method name="delete*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+		
+	
+	<aop:config proxy-target-class="true">
+		<aop:pointcut
+			expression="execution(* com.kh.runningdog..*Impl.*(..))" id="serviceMethod" />
+		<aop:advisor advice-ref="txAdvice" id="transactionAdvisor" pointcut-ref="serviceMethod" />
+	</aop:config>
+	
+	<!-- MultipartResolver 설정 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="102400" />
+		<property name="defaultEncoding" value="utf-8" />
+	</bean>
+	
+	<!-- bean id="visitCountDao" class="com.kh.runningdog.visitCount.model.dao.VisitCountDao"/-->
+	
+</beans>
+
+
+
+
+
+
+
+
+
+

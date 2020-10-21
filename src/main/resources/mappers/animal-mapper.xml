@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="animalMapper">
+
+	<resultMap type="Animal" id="resultAnimal">
+		<result column="age" property="age" />
+		<result column="care_addr" property="careAddr" />
+		<result column="care_nm" property="careNm" />
+		<result column="charge_nm" property="chargeNm" />
+		<result column="color_cd" property="colorCd" />
+		<result column="desertion_no" property="desertionNo" />
+		<result column="filename" property="filename" />
+		<result column="happen_dt" property="happenDt" />
+		<result column="happen_place" property="happenPlace" />
+		<result column="kind_cd" property="kindCd" />
+		<result column="neuter_yn" property="neuterYn" />
+		<result column="notice_edt" property="noticeEdt" />
+		<result column="notice_no" property="noticeNo" />
+		<result column="notice_sdt" property="noticeSdt" />
+		<result column="officetel" property="officetel" />
+		<result column="org_nm" property="orgNm" />
+		<result column="popfile" property="popfile" />
+		<result column="process_state" property="processState" />
+		<result column="sex_cd" property="sexCd" />
+		<result column="special_mark" property="specialMark" />
+		<result column="weight" property="weight" />
+
+	</resultMap>
+	<resultMap type="Animal" id="resultOne">
+		<result column="desertion_no" property="desertionNo"/>
+	</resultMap>
+	
+	
+	
+	<select id="selectList" parameterType="Animal" resultMap="resultAnimal">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, AGE, CARE_ADDR, CARE_NM, CARE_TEL, CHARGE_NM, COLOR_CD, DESERTION_NO,
+					 FILENAME, HAPPEN_DT, HAPPEN_PLACE, KIND_CD, NEUTER_YN, NOTICE_EDT, NOTICE_NO,
+					 NOTICE_SDT, OFFICETEL, ORG_NM, POPFILE, PROCESS_STATE, SEX_CD, SPECIAL_MARK, WEIGHT, A_COUNT
+			  FROM (SELECT *
+			  		FROM ANIMAL WHERE 1=1
+			  		<if test="searchFiled != null and searchFiled != ''">
+					AND ${searchFiled} LIKE '%' || #{searchValue} || '%'	
+					</if>
+					ORDER BY TO_NUMBER(DESERTION_NO) DESC))
+		WHERE RNUM BETWEEN #{startRowNo} AND #{endRowNo}
+	</select>
+	
+	<select id ="selectListCount" resultType="int">
+		SELECT COUNT(*)
+		FROM ANIMAL
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled != ''">
+			AND ${searchFiled} LIKE '%' || #{searchValue} || '%'	
+		</if>
+	</select>
+	
+	
+	<select id="selectOne" parameterType="String" resultMap="resultAnimal">
+		SELECT *
+		FROM ANIMAL
+		WHERE DESERTION_NO = #{ desertionNo }
+	</select>
+	
+	<select id="selectNext" parameterType="Animal" resultType="string">
+		SELECT NVL(MIN(DESERTION_NO),#{desertionNo})
+		FROM ANIMAL
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE '%' || #{searchValue} || '%'
+		</if>
+		<![CDATA[
+		AND DESERTION_NO > #{ desertionNo }
+		]]>
+	</select>
+	
+	<select id="selectPrev" parameterType="Animal" resultType="string">
+		SELECT NVL(MIN(DESERTION_NO),#{desertionNo})
+		FROM ANIMAL
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE '%' || #{searchValue} || '%'
+		</if>
+		<![CDATA[
+		AND DESERTION_NO > #{ desertionNo }
+		]]>
+	</select>
+	
+	<insert id="insertAnimal" parameterType="Animal">
+		INSERT INTO ANIMAL
+		VALUES (
+			   #{ age },
+			   #{ careAddr },
+			   #{ careNm },
+			   #{ careTel },
+			   #{ chargeNm },
+			   #{ colorCd },
+			   #{ desertionNo },
+			   #{ filename },
+			   #{ happenDt },
+			   #{ happenPlace },
+			   #{ kindCd },
+			   #{ neuterYn },
+			   #{ noticeEdt },
+			   #{ noticeNo },
+			   #{ noticeSdt },
+			   #{ officetel },
+			   #{ orgNm },
+			   #{ popfile },
+			   #{ processState },
+			   #{ sexCd },
+			   #{ specialMark },
+			   #{ weight },
+			   DEFAULT)
+	</insert>
+	
+	<update id="updateReadCount" parameterType="String">
+		UPDATE ANIMAL SET
+		A_COUNT = A_COUNT + 1
+		WHERE DESERTION_NO = #{ desertionNo }
+	</update>
+	
+</mapper>

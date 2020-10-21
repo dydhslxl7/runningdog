@@ -1,0 +1,2409 @@
+@charset "utf-8";
+
+
+/* 공통 - 레이아웃 관련*/
+#content {
+    position: relative;
+}
+
+
+/*서브 타이틀*/
+.sub-title {
+}
+.sub-title h2 {
+    font-size: 3.125rem;
+    font-weight: 500;
+    line-height: 3.125rem;
+    text-align: center;
+}
+.sub-title .navi {
+}
+.sub-title .navi li {
+    float: left;
+}
+.sub-title .navi li a {
+    font-size: 1rem;
+    padding: 0 0.375rem;
+    line-height: 1.5rem;
+}
+/*서브 타이틀 끝*/
+
+
+/*서브 비주얼/타이틀 - 베가스 */
+.visual-sub-vagas {
+    position: relative;
+    width:100%;
+    height:25rem !important;
+}
+.visual-sub-vagas .vsv-copy {
+    width: 1300px;
+    margin: 9.75rem auto 0;
+    text-align: center;
+}
+.sub-title > div {
+    overflow: hidden;
+    padding-bottom: 1.25rem;
+}
+.sub-title > div .navi {
+    float: right;
+}
+.sub-title > div .navi li {
+    float: left;
+    color: #fff;
+}
+.sub-title > div .navi li a {
+    font-size: 1rem;
+    padding: 0 0.375rem;
+    line-height: 1.5rem;
+    color: #fff;
+    font-family: "Noto Sans KR";
+    font-weight: 300;
+}
+.visual-sub-vagas .vsv-copy h2 {
+    color: #fff;
+    font-size: 2.875rem;
+    font-weight: 500;
+    line-height: 3.125rem;
+    padding-bottom: 2.5rem;
+}
+.visual-sub-vagas .vsv-copy h2 span {
+    position: relative;
+    padding-bottom: 1.25rem;
+}
+.visual-sub-vagas .vsv-copy h2 span:before {
+    content: '';
+    position: absolute;
+    width: 3.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-bottom: 2px solid #fff;
+}
+.visual-sub-vagas .vsv-copy h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 300;
+}
+/*서브 비주얼/타이틀 끝*/
+
+
+/*검색*/
+#content .search_wrap  {
+    width: 100%;
+    margin: 0 auto 3rem;
+    background-color: #ff92a8;
+    border-radius: 0.9375rem;
+    padding: 1.875rem 5%; 
+    z-index: 1;
+    -moz-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+#content .search_wrap select {
+    float: left;
+    width: 20%;
+    border: 2px solid #fff;
+    border-radius: 0.625rem;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    color: #000;
+    font-size: 1rem;
+    color: #fff;
+    background-color: transparent;
+    padding:0 1rem;
+}
+#content .search_wrap .search-box {
+    float: right;
+    overflow: hidden;
+    width: 79%;
+    border: 2px solid #fff;
+    border-radius: 0.625rem;
+    height: 3.125rem;
+    line-height: 3.125rem;
+}
+#content .search_wrap .search-box input[type="text"] {
+    float: left;
+    width: 92%;
+    font-size: 1rem;
+    height: 2.875rem;
+    line-height:2.875rem;
+    background-color: transparent;
+    border: none;
+    color: #000;
+    padding-left: 1.25rem;
+}
+.search-box input::-webkit-input-placeholder {
+    color: #fff;
+}
+.search-box input:-ms-input-placeholder {
+    color: #fff;
+}
+.search-box input::-webkit-input-placeholder {
+    color: #fff;
+}
+.search-box input:-ms-input-placeholder {
+    color: #fff;
+}
+.search-box button {
+    float: right;
+    width: 8%;
+    height: 2.875rem;
+    line-height:2.875rem;
+    font-size: 2rem;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    text-align: center;
+    transition: 0.3s;
+}
+.search-box button:hover {
+    color: #ff92a8;
+    background-color: #fff;
+}
+/*검색 끝*/
+
+
+/*기본레이아웃*/
+.subContent_wrap {
+    width: 1300px;
+    margin: 0 auto;
+}
+.subContent {
+    float: right;
+    width: 1000px;
+    margin-top:3rem;
+}
+.subContent .animalList > ul,
+.sort-area {
+    width: 100%;
+    margin: 0 auto;
+}
+.sort-area {
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+}
+.sort-area > h4 {
+    float: left;
+}
+.sort-area > div {
+    float: right;
+    font-size: 0;
+}
+.sort-area > div > div {
+    float: right;
+}
+.sort-area > div > div a {
+    position: relative;
+    float: left;
+    font-size: 1rem;
+    padding: 0.1875rem 0.625rem;
+    margin: 0 0.1875rem;
+    display: inline-block;
+}
+.sort-area > div > div a:hover:before, .sort-area > div > div a.active:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background-color: #ff92a8;
+}
+.sort-area > div > div a:hover, .sort-area > div > div a.active {
+    font-weight: 500;
+    color: #ff92a8;
+}
+.sort-area > div > .location {
+    float: right;
+    margin-right : 10px;
+   
+}
+.sort-area > div > .location select {
+    border: 1px solid #ff92a8;
+    color: #fff;
+    height:30px;
+    border-radius: 0.3125rem;
+    color: #ff92a8;
+    font-size:1rem;
+    width: 100px;
+    padding: 0 8px;
+}
+
+
+
+@media all and (max-width:479px) {
+    .visual-sub-vagas {
+        height: 17rem !important;
+    }
+    .visual-sub-vagas .vsv-copy {
+        margin: 5rem auto 0;
+    }
+    .sub-title > div {
+        padding-bottom: 0;
+    }
+    .visual-sub-vagas .vsv-copy h2 {
+        font-size: 1.8rem;
+        line-height: 2rem;
+        padding-bottom: 2rem;
+    }
+    .visual-sub-vagas .vsv-copy h2 span {
+        padding-bottom: 1rem;
+    }
+    .visual-sub-vagas .vsv-copy h3 {
+        font-size: 1rem;
+    }
+    #content .search_wrap {
+        padding: 1.25rem 5%;
+        margin: 1.875rem auto 2.5rem !important;
+    }
+    #content .search_wrap .search-box input[type="text"] {
+        width: 84%;
+    }
+    .search-box button {
+        width: 16% !important;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+    .visual-sub-vagas {
+        height: 20rem !important;
+    }
+    .visual-sub-vagas .vsv-copy {
+        margin: 5rem auto 0;
+    }
+    .sub-title > div {
+        padding-bottom: 0;
+    }
+    #content .search_wrap .search-box input[type="text"] {
+        width: 85%;
+    }
+    .search-box button {
+        width: 15%;
+    }
+}
+@media all and (max-width:600px) {
+    .visual-sub-vagas .vsv-copy h2 {
+        font-size: 2.25rem;
+        padding-bottom: 1.625rem;
+    }
+    .visual-sub-vagas .vsv-copy h2 span {
+        position: relative;
+        padding-bottom: 1rem;
+    }
+    .subContent {
+        margin-top: 1.25rem;
+    }
+    #content .search_wrap select {
+        width: 100%;
+        margin-bottom: 0.625rem;
+    }
+    #content .search_wrap .search-box {
+        width: 100%;
+    }
+}
+@media all and (min-width:768px) and (max-width:991px) {
+    .visual-sub-vagas {
+        height: 22rem !important;
+    }
+    .visual-sub-vagas .vsv-copy {
+        margin: 7rem auto 0;
+    }
+}
+@media all and (min-width:992px) and (max-width:1299px) {
+}
+@media all and (max-width:1299px) {
+    .visual-sub-vagas .vsv-copy {
+        width: 100%;
+    }
+    .subContent_wrap {
+        width: 96%;
+    }
+    .subContent {
+        width: 75%;
+    }
+}
+@media all and (max-width:999px) {
+    .subContent {
+        width: 100%;
+    }
+    #content .search_wrap {
+        padding: 1.25rem 5%;
+        margin: 0 auto 2.5rem !important;
+    }
+}
+
+
+
+/*유기동물매칭 리스트*/
+.subContent .animalList {
+    padding: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+    border-radius: 0.625rem;
+}
+.animalList > ul {
+    font-size: 0;
+}
+.animalList > ul li {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 31.3333%;
+    padding: 0.625rem 1%;
+    margin: 0 1% 0.625rem;
+    cursor: pointer;
+    border-radius: 0.9375rem;
+    vertical-align: top;
+}
+.animalList > ul li.grid-sizer {
+    display: none;
+}
+.animalList > ul li.grid-item:before {
+    content: '';
+    position: absolute;
+    bottom: -0.3125rem;
+    right: 0;
+    left: 0;
+    border: 1px solid #eee;
+}
+.animalList > ul li:hover {
+    border: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.animalList > ul li > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.625rem;
+    max-height: 300PX;
+}
+.animalList > ul li > div a.animalImg {
+    overflow: hidden;
+    border-radius: 0.625rem;
+    max-height: inherit;
+    display: block;
+}
+.animalList > ul li > div a.chooseIcon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fb3860;
+    color: #fff;
+    border: 1px solid #fb3860;
+    font-weight: 500;
+}
+.animalList > ul li > div a.closeIcon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fff;
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #888;
+    font-weight: 500;
+}
+.animalList > ul li > div a.urlIcon {
+    position: absolute;
+    bottom: 0.3125rem;
+    right: 0.3125rem;
+    font-size: 1rem;
+    background-color:#fff;
+    border-radius: 100%;
+    color: #999;
+    border: 1px solid #999;
+    width: 1.875rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+}
+.animalList > ul li > div:hover a.urlIcon {
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.animalList > ul li > div img {
+    width: 100%;
+    /*border-radius: 0.625rem;*/
+}
+.animalList > ul li > h3 {
+    font-size: 1.125rem;
+    color: #333;
+    margin-bottom: 0.625rem;
+
+    /* 여러 줄 자르기 추가 스타일 */
+    word-break: break-all;
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.375rem;
+    max-height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.animalList > ul li > p {
+    font-size: 0.9375rem;
+    line-height: 1.375rem;
+    color: #777;
+    padding-bottom: 0.9375rem;
+}
+.animalList > ul li > p span {
+    color: #999;
+    padding-top: 0.3125rem;
+    display: block;
+}
+.animalList > ul li.close > h3, .subContent .animalList > ul li.close > p {
+    text-decoration: line-through;
+    color: #999;
+}
+.animalList > ul li.close {
+    opacity: 0.6;
+}
+
+
+/*유기동물매칭 뷰*/
+.subContent .animalView {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.subContent .animalView p.topText {
+    font-size: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+    word-break: break-all;
+    line-height: 1.25rem;
+}
+.animalView dl {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+.animalView dl dt {
+    float: left;
+    max-width: 42%;
+    text-align: center;
+}
+.animalView dl dt div.viewImg {
+	width: 100%;
+    margin-bottom: 1.25rem;
+    max-height: 500px;
+    border-radius: 0.625rem;
+    overflow: hidden;
+}
+.animalView dl dt div.viewImg img {
+    max-width: 100%;
+}
+.animalView dl dt a.linkBtn {
+    font-size: 0.875rem;
+    background-color: #333;
+    padding: 0.375rem 1rem;
+    border-radius: 0.3125rem;
+    color: #fff;
+    margin: 0 0.3125rem;
+    display: inline-block;
+}
+.animalView dl dt a.linkBtn i {
+    font-size: 1rem;
+}
+.animalView dl dt a.linkBtn:hover {
+    background-color: #fb3860;
+}
+.animalView dl dd {
+    float: right;
+    width: 55%;
+}
+.animalView dl dd h3 {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+}
+.animalView dl dd .animalInfo {
+    width: 100%;
+    border-top: 1px solid #444;
+}
+.animalView dl dd .animalInfo tbody {
+    width: 100%;
+}
+.animalView dl dd .animalInfo tbody tr {
+    font-size: 0.875rem;
+    border-bottom: 1px solid #ccc;
+}
+.animalView dl dd .animalInfo tbody tr th {
+    font-weight: 500;
+    padding: 0.75rem 0.625rem;
+    background-color: #f1f1f1;
+}
+.animalView dl dd .animalInfo tbody tr td {
+    padding: 0.75rem 0.625rem;
+}
+.animalView dl dd .animalInfo tbody tr td span {
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fff;
+    padding:0 0.5rem;
+    margin-left: 0.5rem;
+}
+.animalView dl dd .animalInfo tbody tr td span.protectOn {
+    color: #ff92a8;
+    border: 1px solid #ff92a8;
+    font-weight: 500;
+}
+.animalView dl dd .animalInfo tbody tr td span.protectOut {
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #888;
+}
+
+.animalView  .viewContent {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 3rem 5rem;
+    margin-bottom: 1.25rem;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+}
+.animalView .textCon {
+    font-size: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    background-color: #ffeaee;
+    border-radius: 0.625rem;
+    line-height: 1.375rem;
+    word-break: break-all;
+}
+@media all and (max-width:479px) {
+}
+@media all and (max-width:600px) {
+    .animalList > ul li {
+        width: 48% !important;
+    }
+    .animalView  .viewContent {
+        padding: 3rem 1.25rem;
+    }
+    .animalView dl dt {
+        width: 100%;
+    }
+    .animalView dl dd {
+        margin-top: 2.5rem;
+        width: 100%;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+    
+}
+
+
+
+/*자원봉사 모집 리스트*/
+.servicelList {
+    border-top: 1px solid #333;
+    overflow:hidden;
+    width: 100%;
+}
+.servicelList tbody {
+    width: 100%;
+}
+.servicelList tbody tr {
+    overflow:hidden;
+    width: 100%;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+.servicelList tbody tr:hover {
+    background-color: #fff5f5;
+}
+.servicelList tbody tr td {
+    position: relative;
+    padding:0.625rem;
+}
+.servicelList tbody tr td.img img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 0.625rem;
+}
+.servicelList tbody tr td.img span {
+    position: absolute;
+    top: 0.9375rem;
+    left: 0.9375rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding:0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fff;
+}
+.servicelList tbody tr.serviceOn td.img span {
+    color: #fff;
+    border: 1px solid #fb3860;
+    background-color: #fb3860;
+}
+.servicelList tbody tr.serviceOut td.img span {
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #888;
+}
+.servicelList tbody tr td h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0.3125rem 0 0.625rem;
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.625rem;
+    max-height: 3.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+.servicelList tbody tr td ul {
+    overflow: hidden;
+    margin-bottom: 0.625rem;
+}
+.servicelList tbody tr td ul li {
+    float: left;
+    color:#333;
+    font-size: 0.9375rem;
+    margin-bottom: 0.3125rem;
+    margin-right: 0.9375rem;
+    line-height: 1.25rem;
+}
+.servicelList tbody tr td ul li span {
+    color:#777;
+}
+.servicelList tbody tr td ul li.location {
+    font-weight: 500;
+    word-break: break-all;
+}
+.servicelList tbody tr td a {
+    background-color: #ff92a8;
+    border-radius: 0.625rem;
+    padding:0 0.9375rem;
+    line-height: 1.875rem;
+    display: inline-block;
+    color: #fff;
+    font-size: 0.9375rem;
+    float: right;
+}
+.servicelList tbody tr td a:hover {
+    background-color: #fb3860;
+}
+.servicelList tbody tr.serviceOut {
+    opacity: 0.6;
+}
+.servicelList tbody tr.serviceOut td ul li {
+    text-decoration: line-through;
+    color:#999;
+}
+.servicelList tbody tr.serviceOut td ul li span {
+    text-decoration: line-through;
+    color:#999;
+}
+
+/*자원봉사 모집 뷰*/
+.serviceView {
+    width: 100%;
+}
+.serviceView p.topText {
+    font-size: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+    word-break: break-all;
+    line-height: 1.25rem;
+}
+.serviceView dl {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+.serviceView dl dt {
+    float: left;
+    width: 42%;
+    text-align: center;
+}
+.serviceView dl dt div.viewImg {
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.serviceView dl dt div.viewImg img {
+    max-width: 100%;
+    border-radius: 0.625rem;
+}
+.serviceView dl dt a.linkBtn {
+    font-size: 0.875rem;
+    background-color: #333;
+    padding: 0.3125rem 1rem;
+    border-radius: 0.625rem;
+    color: #fff;
+    margin: 0 0.3125rem;
+    display: inline-block;
+}
+.serviceView dl dt a.linkBtn i {
+    font-size: 1rem;
+}
+.serviceView dl dt a.linkBtn:hover {
+    background-color: #fb3860;
+}
+.serviceView dl dd {
+    float: right;
+    width: 55%;
+}
+.serviceView dl dd h3 {
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
+}
+.serviceView dl dd .serviceInfo {
+    width: 100%;
+    border-top: 1px solid #444;
+}
+.serviceView dl dd .serviceInfo tbody {
+    width: 100%;
+}
+.serviceView dl dd .serviceInfo tbody tr {
+    font-size: 0.875rem;
+    border-bottom: 1px solid #ccc;
+}
+.serviceView dl dd .serviceInfo tbody tr th {
+    font-weight: 500;
+    padding: 0.75rem 0.625rem;
+    background-color: #f1f1f1;
+}
+.serviceView dl dd .serviceInfo tbody tr td {
+    padding: 0.75rem 0.625rem;
+}
+.serviceView dl dd .serviceInfo tbody tr td span {
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fff;
+    padding:0 0.5rem;
+    margin-left: 0.5rem;
+}
+.serviceView dl dd .serviceInfo tbody tr td span.serviceOn {
+    color: #ff92a8;
+    border: 1px solid #ff92a8;
+    font-weight: 500;
+}
+.serviceView dl dd .serviceInfo tbody tr td span.serviceOut {
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #888;
+}
+.serviceView .textCon {
+    font-size: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    background-color: #ffeaee;
+    border-radius: 0.625rem;
+    line-height: 1.375rem;
+    word-break: break-all;
+}
+.serviceView .viewContent {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 3rem 5rem;
+    margin-bottom: 1.25rem;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+}
+@media all and (max-width:479px) {
+    .servicelList colgroup col:first-child {
+        width: 30%;
+    }
+}
+@media all and (max-width:600px) {
+    .servicelList colgroup col:last-child {
+        display: none;
+    }
+    .servicelList tbody tr td:last-child {
+        display: none;
+    }
+    .serviceView dl dt {
+        width: 100%;
+    }
+    .serviceView dl dd {
+        margin-top: 2.5rem;
+        width: 100%;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+    
+}
+
+
+
+
+/*후원하기 리스트*/
+.subContent .sponsorList {
+    padding: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+    border-radius: 0.625rem;
+}
+.sponsorList > ul {
+    font-size: 0;
+}
+.sponsorList > ul li {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 31.3333%;
+    padding: 1.154rem 1%;
+    margin: 0 1% 1.154rem;
+    cursor: pointer;
+    border-radius: 0.9375rem;
+    vertical-align: top;
+}
+.sponsorList > ul li:before {
+    content: '';
+    position: absolute;
+    bottom: -0.3125rem;
+    right: 0;
+    left: 0;
+    border: 1px solid #eee;
+}
+.sponsorList > ul li:hover {
+    border: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.sponsorList > ul li > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.625rem;
+}
+.sponsorList > ul li > div a.chooseIcon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fb3860;
+    color: #fff;
+    border: 1px solid #fb3860;
+    font-weight: 500;
+}
+.sponsorList > ul li > div a.closeIcon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fff;
+    color: #fff;
+    background-color: #888;
+    border: 1px solid #888;
+    font-weight: 500;
+}
+.sponsorList > ul li > div a.urlIcon {
+    position: absolute;
+    bottom: 0.3125rem;
+    right: 0.3125rem;
+    font-size: 1rem;
+    background-color:#fff;
+    border-radius: 100%;
+    color: #999;
+    border: 1px solid #999;
+    width: 1.875rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+}
+.sponsorList > ul li > div:hover a.urlIcon {
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.sponsorList > ul li > div img {
+    width: 100%;
+    border-radius: 0.625rem;
+}
+.sponsorList > ul li > h3 {
+    font-size: 1.125rem;
+    color: #333;
+    margin-bottom: 0.625rem;
+    word-break: break-all;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.375rem;
+    max-height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.sponsorList > ul li > p {
+    font-size: 0.9375rem;
+    color: #777;
+    margin-bottom: 0.9375rem;
+    word-break: break-all;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.375rem;
+    max-height: 4.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.sponsorList > ul li > span.sponsorBtn {
+    text-align: center;
+    display: block;
+    z-index: 1;
+}
+.sponsorList > ul li > span.sponsorBtn a {
+    display: inline-block;
+    color: #ff92a8;
+    border: 1px solid #ff92a8;
+    font-size:0.875rem;
+    margin:0 0.625rem;
+    padding: 0.1875rem 0.625rem;
+}
+.sponsorList > ul li > span.sponsorBtn a:hover {
+    color: #fff;
+    background-color: #fb3860;
+    border: 1px solid #fb3860;
+}
+.sponsorList > ul li.close > h3, .subContent .sponsorList > ul li.close > p {
+    text-decoration: line-through;
+    color: #999;
+}
+.sponsorList > ul li.close {
+    opacity: 0.6;
+}
+
+
+/*후원하기 소개 뷰*/
+.subContent .sponsorView {
+    margin: 0 auto 5rem;
+    position: relative;
+    overflow: hidden;
+}
+.sponsorView .sPaymentTitle {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+.sponsorView .sPaymentTitle p {
+    text-align: right;
+    color: #555;
+    font-size: 0.9375rem;
+    margin-bottom: 1.875rem;
+}
+.sponsorView .sPaymentTitle p a.linkBtn {
+    font-size: 0.875rem;
+    background-color: #333;
+    padding: 0.3125rem 1rem;
+    border-radius: 0.625rem;
+    color: #fff;
+    display: inline-block;
+    margin-left: 1.563rem;
+}
+.sponsorView .sPaymentTitle p a.linkBtn i {
+    font-size: 1rem;
+}
+.sponsorView .sPaymentTitle p a.linkBtn:hover {
+    background-color: #fb3860;
+}
+.sponsorView .sPaymentTitle > div {
+    font-size: 1rem;
+    overflow: hidden;
+    text-align: center;
+}
+.sponsorView .sPaymentTitle > div h3 {
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    margin-bottom: 0.9375rem;
+    color: #ff92a8;
+}
+.sponsorView .sPaymentTitle > div h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: 2rem;
+}
+.sponsorView span.sPaymentBtn {
+    text-align: center;
+    display: block;
+}
+.sponsorView span.sPaymentBtn a {
+    font-size: 1.375rem;
+    line-height: 1.875rem;
+    padding:  0.5rem 1.25rem;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+    font-weight: 500;
+    display: inline-block;
+}
+.sponsorView span.sPaymentBtn a i {
+    font-size: 1.25rem;
+}
+.sponsorView span.sPaymentBtn a:hover {
+    background-color: #fb3860;
+    border: 1px solid #fb3860;
+}
+.sponsorView .textCon {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 3rem 5rem;
+    margin-bottom: 1.25rem;
+    border-radius: 0.625rem;
+    line-height: 1.375rem;
+    word-break: break-all;
+}
+.sponsorView .textCon img {
+    max-width: 100%;
+}
+
+
+/*후원하기 결제*/
+.subContent .sPaymentInfo {
+    width:100%;
+}
+.sPaymentInfo thead {
+    width:100%;
+    border-bottom: 1px solid #999;
+}
+.sPaymentInfo thead tr {
+}
+.sPaymentInfo thead tr th {
+    color: #333;
+    font-size: 1.125rem;
+    padding: 0 0.625rem 0.9375rem;
+    font-weight: 500;
+}
+.sPaymentInfo thead tr th span {
+    font-size: 0.875rem;
+    color:red;
+}
+.sPaymentInfo tbody {
+    width:100%;
+    border-bottom: 1px solid #ccc;
+}
+.sPaymentInfo tbody tr {
+    
+}
+.sPaymentInfo tbody tr td:first-child {
+    color: #333;
+    font-size: 1rem;
+    padding: 1.25rem 1.875rem;
+    font-weight: 500;
+}
+.sPaymentInfo tbody tr td:first-child span {
+    color:red;
+}
+.sPaymentInfo tbody tr td:last-child {
+    color: #777;
+    font-size: 16px;
+    padding: 1.25rem 7% 1.25rem 0;
+}
+.sPaymentInfo tbody tr td button {
+    width: 8.75rem;
+    height: 2.5rem;
+    border: 1px solid #ff92a8;
+    color:#ff92a8;
+    background-color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+}
+.sPaymentInfo tbody tr td button.active {
+    border: 1px solid #fb3860;
+    color:#fff;
+    background-color: #fb3860;
+}
+.sPaymentInfo tbody tr td button:hover {
+    border: 1px solid #fb3860;
+    color:#fff;
+    background-color: #fb3860;
+}
+.sPaymentInfo tbody tr td button i {
+    font-size: 1.375rem;
+    vertical-align: bottom;
+}
+.sPaymentInfo tbody tr td select {
+    height: 2.375rem;
+    color: #777;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.sPaymentInfo tbody tr td input {
+    height: 40px;
+    float: left;
+}
+.sPaymentInfo tbody tr td label {
+    line-height: 2.5rem;
+    margin-right:1.25rem;
+    font-size: 1rem;
+}
+.sPaymentInfo tbody tr td label input[type="checkbox"] {
+    vertical-align: middle;
+    width: 1.25rem;
+    height: 2.5rem;
+    margin:0 0.625rem 0 0;
+}
+.sPaymentInfo tbody tr td label input[type="radio"] {
+    vertical-align: middle;
+    width: 1.25rem;
+    height: 2.5rem;
+    margin:0 0.625rem 0 0;
+}
+.sPaymentInfo tbody tr.receipt {
+    background-color: #f6f6f6;
+}
+.sPaymentInfo tbody tr.receipt td {
+    padding: 1.875rem 0;
+    text-align: center;
+}
+.sPaymentInfo tbody tr.receipt td > p {
+    color:#333;
+    padding-bottom: 1.25rem;
+}
+.sPaymentInfo tbody tr.receipt td > div p {
+    color:#333;
+    padding-bottom: 1.25rem;
+}
+.sPaymentInfo tbody tr.receipt td > div p input {
+    float: unset;
+    display:inline-block;
+}
+.sPaymentInfo tbody tr.privacyInfo td a {
+    border: 1px solid #999;
+    padding:0.0625rem 0.375rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+.sPaymentInfo tbody tr.privacyInfo td a:hover {
+    border: 1px solid #666;
+    color: #fff;
+    background-color: #666;
+}
+.sPaymentInfo .privacyCke_con {
+    width: 100%;
+}
+.sPaymentInfo .privacyCke_con td {
+    padding:0 0 1.25rem 0 !important;
+}
+.sPaymentInfo .privacyCke_con td textarea {
+    display: none;
+    position: relative;
+    padding: 0.9375rem 0.625rem;
+    width: 100%;
+    min-height: 12.5rem;
+    max-height: 12.5rem;
+    background-color: #f3f3f3;
+    border: 1px solid #aaa;
+    font-size: 0.875rem;
+    color: #555;
+}
+.sPaymentInfo .privacyCke_con td textarea.on {
+    display: block;
+}
+.subContent .sPayment_Btn {
+    margin: 3.125rem 0 6.25rem;
+    text-align: center;
+}
+.subContent .sPayment_Btn button {
+    font-size: 1.375rem;
+    line-height: 1.875rem;
+    padding: 0.7692rem 0;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+    font-weight: 500;
+    display: inline-block;
+}
+.subContent .sPayment_Btn button i {
+    font-size: 1.25rem;
+}
+.subContent .sPayment_Btn button:hover {
+    background-color: #fb3860;
+    border: 1px solid #fb3860;
+}
+
+.subContent .sponsorSuccess {
+	text-align: center;
+	padding-top: 150px;
+}
+.subContent .sponsorSuccess h1 {
+	font-size: 32px;
+    margin-bottom: 50px;
+    line-height: 30px;
+}
+.subContent .sponsorSuccess table {
+	width: 70%;
+    margin: 0 auto;
+    border-top: 3px solid #333;
+    margin-bottom: 50px;
+}
+.subContent .sponsorSuccess table tbody {
+	width: 100%;
+}
+.subContent .sponsorSuccess table tbody tr {
+	width: 100%;
+}
+.subContent .sponsorSuccess table tbody tr th {
+    padding: 20px 10px;
+    background-color: #ff92a8;
+    font-size: 14px;
+	text-align: center;
+	border-bottom: 2px solid #aaa;
+    border-right: 1px solid #ddd;
+    font-weight: 500;
+}
+.subContent .sponsorSuccess table tbody tr th:last-child {
+    border-right: none;
+}
+.subContent .sponsorSuccess table tbody tr td {
+    font-size: 14px;
+    padding: 20px 10px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.subContent .sponsorSuccess table tbody tr td:last-child {
+    border-right: none;
+}
+.subContent .sponsorSuccess button {
+	background-color: #fb3860;
+    border: 1px solid #fb3860;
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+    line-height: 2.25rem;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 0 3rem;
+}
+
+@media all and (max-width:479px) {
+}
+@media all and (max-width:600px) {
+    .sponsorList > ul li {
+        width: 48% !important;
+    }
+    .sponsorList > ul li > span.sponsorBtn a {
+        margin: 0 0.2rem;
+    }
+    .subContent .sponsorView {
+        margin: 0 auto 3rem;
+    }
+    .sponsorView .sPaymentTitle {
+        margin-bottom: 0;
+    }
+    .sponsorView .sPaymentTitle > div h3 {
+        font-size: 1.375rem;
+        line-height: 1.375rem;
+    }
+    .sponsorView .sPaymentTitle > div h2 {
+        font-size: 2rem;
+        line-height: 2.188rem;
+        margin-bottom: 2rem;
+    }
+    .sponsorView span.sPaymentBtn a {
+        font-size: 1.125rem;
+    }
+    .sponsorView .textCon {
+        padding: 3rem 1.25rem;
+    }
+    .sPaymentInfo colgroup {
+        display: none;
+    }
+    .sPaymentInfo thead tr th {
+        font-size: 1.375rem;
+        padding: 0 0 0.9375rem !important;
+    }
+    .sPaymentInfo thead tr th span {
+        font-size: 0.9375rem;
+    }
+    .sPaymentInfo tbody tr td {
+        display: block;
+        width: 100% !important;
+    }
+    .sPaymentInfo tbody tr:first-child td:first-child {
+        padding: 1.875rem 1.25rem 0.3125rem !important;
+    }
+    .sPaymentInfo tbody tr td:first-child {
+        padding: 0 1.25rem 0.3125rem !important;
+        font-size: 1.125rem;
+    }
+    .sPaymentInfo tbody tr td:last-child {
+        padding: 0.3125rem 1.25rem 1.25rem !important;
+    }
+    .sPaymentInfo tbody tr td input[type="text"] {
+        width: 100% !important;
+    }
+    .sPaymentInfo tbody tr td input[type="email"] {
+        width: 100% !important;
+    }
+    .sPaymentInfo tbody tr td input[type="tel"] {
+        width: 100% !important;
+    }
+    .sPaymentInfo tbody tr td select {
+        width: 100% !important;
+    }
+    .sPaymentInfo tbody tr td input[type="number"] {
+        width: 100% !important;
+        margin-bottom: 1.125rem;
+    }
+    .sPaymentInfo tbody tr.privacyInfo td:first-child {
+        margin-top: 1.125rem;
+    }
+    .subContent .sPayment_Btn button {
+        font-size: 1.125rem;
+    }
+}
+
+
+
+
+
+
+
+
+
+/*반려동물 상식 리스트*/
+.subContent .issueList {
+    padding: 1.25rem 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #fafafa;
+    border-radius: 0.625rem;
+}
+.subContent .issueList > ul {
+    font-size: 0;
+}
+.issueList > h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2.813rem;
+    color: #333;
+    padding-bottom: 1.875rem;
+}
+.issueList > h2 span {
+    color: #ff869c;
+}
+.issueList > ul {
+    font-size: 0;
+}
+.issueList > ul li.grid-sizer {
+    display: none;
+}
+.issueList > ul li.grid-item {
+    position: relative;
+    float: left;
+    text-align: left;
+    width: 31.333%;
+    padding: 0.625rem 1%;
+    margin: 0 1% 0.625rem;
+    cursor: pointer;
+    border-radius: 0.9375rem;
+    vertical-align: top;
+}
+.issueList > ul li.grid-item:before {
+    content: '';
+    position: absolute;
+    bottom: -0.3125rem;
+    right: 0;
+    left: 0;
+    border: 1px solid #eee;
+}
+.issueList > ul li.grid-item:hover {
+    border: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.issueList > ul li.grid-item > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.issueList > ul li.grid-item > div > a {
+    position: absolute;
+    bottom: 0.3125rem;
+    right: 0.3125rem;
+    font-size: 1.385rem;
+    background-color:#fff;
+    border-radius: 100%;
+    color: #999;
+    border: 1px solid #999;
+    width: 1.875rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+}
+.issueList > ul li.grid-item > div:hover > a {
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.issueList > ul li.grid-item > div > img {
+    width: 100%;
+    border-radius: 0.625rem;
+}
+.issueList > ul li.grid-item > dl {
+    width: 100%;
+    overflow: hidden;
+}
+.issueList > ul li.grid-item > dl dt {
+    width: 20%;
+    margin:0 5%;
+    float: left;
+}
+.issueList > ul li.grid-item > dl dt img {
+    width: 100%;
+    border-radius: 100%;
+}
+.issueList > ul li.grid-item > dl dd {
+    width: 70%;
+    float: right;
+    text-align: left;
+}
+.issueList > ul li.grid-item > dl dd h3 {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.3125rem;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.2rem;
+    max-height: 2.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.issueList > ul li.grid-item > dl dd p {
+    font-size: 0.875rem;
+    color: #777;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.375rem;
+    max-height: 2.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+
+
+/*반려동물 상식 뷰*/
+.subContent .issueView {
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.subContent .issueView p.topText {
+    font-size: 0.875rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+    text-align: center;
+    word-break: break-all;
+    line-height: 1.25rem;
+}
+.issueView dl {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+.issueView dl dt {
+    float: left;
+    width: 42%;
+    text-align: center;
+}
+.issueView dl dt div.viewImg {
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.issueView dl dt div.viewImg img {
+    max-width: 100%;
+    border-radius: 0.625rem;
+}
+.issueView dl dt a.linkBtn {
+    font-size: 0.875rem;
+    background-color: #333;
+    padding: 0.3125rem 1rem;
+    border-radius: 0.625rem;
+    color: #fff;
+    margin: 0 0.3125rem;
+    display: inline-block;
+}
+.issueView dl dt a.linkBtn i {
+    font-size: 1rem;
+}
+.issueView dl dt a.linkBtn:hover {
+    background-color: #fb3860;
+}
+.issueView dl dd {
+    float: right;
+    width: 55%;
+}
+.issueView dl dd > div {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    line-height: 4rem;
+}
+.issueView dl dd > div img {
+    float: left;
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1.5rem;
+    border-radius: 50%;
+}
+.issueView dl dd > div h4 {
+    float: left;
+    font-size: 1.5rem;
+    line-height: inherit;
+}
+.issueView dl dd h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    margin-bottom: 2rem;
+}
+.issueView dl dd p {
+    text-align: right;
+    color: #555;
+    font-size: 0.9375rem;
+}
+.issueView .textCon {
+    font-size: 1rem;
+    line-height: 1.625rem;
+    padding: 3rem 5rem;
+    background-color: #f9f9f9;
+    border-radius: 0.625rem;
+    line-height: 1.375rem;
+    word-break: break-all;
+}
+.issueView .textCon img {
+    max-width: 100%;
+}
+
+@media all and (max-width:479px) {
+}
+@media all and (max-width:600px) {
+    .issueList > ul li {
+        width: 48% !important;
+    }
+    .issueList > ul li > span.sponsorBtn a {
+        margin: 0 0.2rem;
+    }
+    .issueView dl {
+        margin-bottom: 1.25rem;
+    }
+    .issueView dl dt {
+        width: 100%;
+    }
+    .issueView dl dd {
+        margin-top: 2.5rem;
+        width: 100%;
+    }
+    .issueView dl dd > div {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+    .issueView dl dd > div img, .issueView dl dd > div h4 {
+        float: unset;
+        display: inline-block;
+    }
+    .issueView dl dd h2 {
+        font-size: 1.875rem;
+        line-height: 2.375rem;
+        margin-bottom: 1.25rem;
+        text-align: center;
+    }
+    .issueView .textCon {
+        padding: 3rem 1.25rem;
+    }
+}
+
+
+
+
+
+/*맵API*/
+.mapAPI {
+    margin: 3rem 0;
+}
+
+
+/*댓글*/
+.cmt_wrap {
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+.cmt_wrap .cmt_form {
+    background-color: #fff;
+    overflow: hidden;
+}
+.cmt_wrap .cmt_form .cmt_head {
+    text-align: left;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family:'Noto Sans KR';
+    margin-bottom: 0.6875rem;
+}
+.cmt_wrap .cmt_form .cmt_body {
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
+    margin-bottom: 1.25rem;
+}
+.cmt_wrap .cmt_form .cmt_body > textarea {
+    display: block;
+    width: 100%;
+    padding: 0.625rem 0.9375rem;
+    font-size: 0.875rem;
+    line-height: 1.125rem;
+    color: #777;
+    border: none;
+    border-radius: 0.3125rem;
+    box-shadow: none;
+    resize: none;
+    width: 100%;
+    min-height: 6.25rem;
+    max-height: 6.25rem;
+}
+.cmt_wrap .cmt_form .cmt_body .cmt_ok {
+    border-top: 1px solid #ccc;
+    text-align: right;
+    padding: 0.375rem;
+}
+.cmt_wrap .cmt_form .cmt_body .cmt_ok input[type="submit"] {
+    background-color: #555;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 0.1875rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.3125rem;
+}
+.cmt_wrap .cmt_form .cmt_body .cmt_ok input[type="submit"]:hover {
+    background-color: #ff92a8;
+    border: 1px solid #ff92a8;
+}
+.cmt_wrap .cmt_form .cmt_body .cmt_ok input[type="button"] {
+    background-color: #555;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 0.1875rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 0.3125rem;
+}
+.cmt_wrap .cmt_form .cmt_body .cmt_ok input[type="button"]:hover {
+    background-color: #ff92a8;
+    border: 1px solid #ff92a8;
+}
+.cmt_wrap .cmt_con {
+    overflow: hidden;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    background-color: #fcfcfc;
+    margin-bottom: 0.625rem;
+}
+.cmt_wrap .cmt_con li {
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
+    border-bottom: 1px dotted #999;
+}
+.cmt_wrap .cmt_con li:last-child {
+    border-bottom:none;
+}
+.cmt_wrap .cmt_con > li dl {
+    margin: 0.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+.cmt_wrap .cmt_con > li dl dt {
+    line-height: 3.125rem;
+    float: left;
+}
+.cmt_wrap .cmt_con > li dl dt.img {
+    max-width: 3.125rem;
+}
+.cmt_wrap .cmt_con > li dl dt.cmt_date {
+    float: right;
+    color: #999;
+    font-size:0.875rem;
+}
+.cmt_wrap .cmt_con > li dl dt img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+.cmt_wrap .cmt_con > li dl dd {
+    float: left;
+}
+.cmt_wrap .cmt_con > li dl dd h4 {
+    line-height: 3.125rem;
+    color: #555;
+    font-weight: 500;
+    margin: 0 0.9375rem;
+}
+.cmt_wrap .cmt_con li p {
+    line-height: 1.625rem;
+    margin-bottom: 0.625rem;
+}
+.cmt_wrap .cmt_con .cmt_conBtn {
+    overflow: hidden;
+}
+.cmt_wrap .cmt_con .cmt_conBtn button {
+    font-size: 0.8125rem;
+    margin-top: 0.625rem;
+    line-height: 1.125rem;
+    float:right;
+    margin: 0 0.3125rem;
+    border-radius: 0.1875rem;
+    border: 1px solid #333;
+}
+.cmt_wrap .cmt_con .cmt_conBtn button:first-child {
+    float:left;
+}
+.cmt_wrap .cmt_con .cmt_conBtn button:hover {
+    color: #fff;
+    background-color: #333;
+}
+.cmt_wrap .cmt_con .Subcmt_form {
+    margin: 0.625rem 0 0;
+    padding: 0.625rem 0.625rem 1.25rem;
+    border-top: 1px dotted #ccc;
+    overflow: hidden;
+}
+.cmt_wrap .cmt_con .Subcmt_form .cmt_form .cmt_body {
+    margin-bottom: 0;
+}
+
+/*이미지swiper*/
+.viewImg .swiper-container {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.viewImg .swiper-slide {
+    background-size: cover;
+    background-position: center;
+}
+.viewImg .gallery-top {
+    height: 80%;
+    width: 100%;
+}
+.viewImg .gallery-thumbs {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 0.625rem 0;
+}
+.viewImg .gallery-thumbs .swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+}
+.viewImg .gallery-thumbs .swiper-slide-thumb-active {
+    opacity: 1;
+}
+
+
+
+
+
+
+/* 공지사항-리스트 */
+.list-area {
+    position:relative;
+    width:100%;
+    margin: 0 auto;
+    min-height: 25rem;
+}
+.list-area table {
+    border-top: 1px solid #333;
+    width:100%;
+}
+.list-area table tbody {
+    width:100%;
+}
+.list-area table tbody tr {
+    width:100%;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.list-area table tbody tr td {
+    padding: 0.75rem 0;
+}
+.list-area table tbody tr:hover {
+    background-color: #fff5f5;
+}
+.list-area table tbody tr.active {
+    background-color: #fff5f5;
+}
+.list-area table tbody tr td.number {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+}
+.list-area table tbody tr td.title {
+    text-align: left;
+}
+.list-area table tbody tr td.title > h2 {
+    font-size: 1.125rem;
+    color: #333;
+    margin-bottom:0.9375rem;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.625rem;
+    max-height: 3.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.list-area table tbody tr td.title > h2 span {
+    display: inline-block;
+    border-radius: 0.3125rem;
+    background-color: #fb3860;
+    color: #fff;
+    font-size: 0.9375rem;
+    padding: 0 1.25rem;
+    line-height: 1.625rem;
+    margin-right: 0.9375rem;
+}
+.list-area table tbody tr td.title > ul {
+    overflow: hidden;
+}
+.list-area table tbody tr td.title > ul > li {
+    float: left;
+    position: relative;
+    font-size: 0.875rem;
+    color: #777;
+    margin-right: 1.5rem;
+}
+.list-area table tbody tr td.title > ul > li:before {
+    content: '';
+    position: absolute;
+    border-left:1px solid #ccc;
+    height: 0.75rem;
+    top: 0.3125rem;
+    right: -0.75rem;
+}
+.list-area table tbody tr td.title > ul > li:last-child:before {
+    border-left: none;
+}
+.list-area table tbody tr td.fileIcon {
+    font-size: 1.875rem;
+    color: #333;
+    text-align: center;
+}
+.list-area table tbody tr td.writerUser {
+    font-size: 0.875rem;
+    color: #333;
+    text-align: center;
+}
+div.list-no {
+    padding: 9.375rem 0;
+    text-align: center;
+}
+div.list-no h1 {
+    font-size: 1.125rem;
+}
+
+
+
+/* 공지사항-상세 */
+.view-area {
+    overflow: hidden;
+    width:100%;
+    margin:0 auto;
+}
+.view-area h2 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    color: #333;
+    text-align: center;
+    padding-bottom: 2.5rem;
+}
+.view-area h3 {
+    text-align: center;
+    margin-bottom: 0.625rem;
+}
+.view-area h3 span {
+    display: inline-block;
+    border-radius: 0.3125rem;
+    background-color: #fb3860;
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0 1.25rem;
+    line-height: 1.875rem;
+}
+.view-area > ul {
+    text-align: center;
+    overflow: hidden;
+    border-top: 1px solid #333;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #f7f7f7;
+}
+.view-area > ul li {
+    position: relative;
+    font-size: 0.9375rem;
+    color: #333;
+    margin: 0 1.25rem;
+    display: inline-block;
+}
+.view-area > ul li:before {
+    content: '';
+    position: absolute;
+    top: 0.3125rem;
+    right: -1.375rem;
+    height: 0.75rem;
+    border-right:1px solid #ccc;
+}
+.view-area > ul li:last-child:before {
+    border-right: none;
+}
+.view-area > ul li span {
+    color: #777;
+}
+.view-area > ul li i {
+    font-size: 0.9375rem;
+}
+.view-area .view-ctn {
+    width: 100%;
+    padding: 3.125rem 2.5rem;
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.5rem;
+    border-bottom: 1px solid #333;
+    min-height: 25rem;
+}
+
+
+/* 글작성 */
+.write-area {
+    width:100%;
+    overflow: hidden;
+}
+.write-area > h2 {
+    color: #333;
+    font-size: 2rem;
+    padding-bottom: 1.25rem;
+    text-align: center;
+    line-height: 2rem;
+}
+.write-area > p {
+    color: #777;
+    font-size: 1rem;
+    padding-bottom: 2.5rem;
+    font-weight: 500;
+    text-align: center;
+}
+.write-area > table {
+    width:100%;
+    border-top: 1px solid #333;
+}
+.write-area > table tbody {
+    width:100%;
+}
+.write-area > table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+.write-area > table tbody tr td:first-child {
+    color: #333;
+    font-size: 1rem;
+    padding: 0.625rem 1.875rem;
+    font-weight: 500;
+}
+.write-area > table tbody tr td:last-child {
+    color: #777;
+    font-size: 16px;
+    padding: 0.625rem 7% 0.625rem 0;
+}
+.write-area > table tbody tr td select {
+    height: 2.375rem;
+    color: #777;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 0.3125rem;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.write-area > table tbody tr td input {
+    height: 40px;
+}
+.write-area > table tbody tr td label {
+    margin-right: 0.9375rem;
+}
+.write-area > table tbody tr td label input[type="radio"] {
+    margin-right: 0.3125rem;
+    margin-top: 0;
+    width: 1rem;
+    vertical-align: middle;
+}
+.write-area > table tbody tr td input[type="file"] {
+    height: auto;
+    line-height: normal;
+    border: 1px solid #999;
+    margin: 0.625rem 0;
+}
+.write-area .write-info {
+    padding-top: 30px;
+    width: 100%;
+    overflow: hidden;
+}
+.write-area .write-info > p {
+    width: 100%;
+    max-height: 8.75rem;
+    border: 1px solid #ccc;
+    overflow-y:scroll;
+    padding: 1.875rem;
+    color: #444;
+    font-size: 0.875rem;
+    background-color: #f9f9f9;
+    margin-bottom: 0.9375rem;
+}
+.write-area .write-info .check-radio {
+    width: 100%;
+    text-align: left;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+.write-area .write-info .check-radio label {
+    margin-right: 0.9375rem;
+}
+.write-area .write-info .check-radio label input[type="radio"] {
+    width: 0.875rem;
+    height: 0.875rem;
+    margin-right: 0.3125rem;
+}
+@media all and (max-width:479px) {
+    .list-area table tbody tr td.title > h2 {
+        margin-bottom: 0;
+    }
+}
+@media all and (max-width:600px) {
+    .list-area table colgroup col:first-child {
+        width: 15%;
+    }
+    .list-area table colgroup col:last-child {
+        display: none;
+    }
+    .list-area table tbody tr td.writerUser {
+        display: none;
+    }
+    .list-area table tbody tr td.fileIcon {
+        display: none;
+    }
+    .view-area h2 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        padding-bottom: 1.563rem;
+    }
+    .view-area > ul {
+        text-align: left;
+    }
+    .view-area .view-ctn {
+        padding: 3rem 1.25rem;
+    }
+    .write-area > h2 {
+        padding-bottom: 0.9375rem;
+    }
+    .write-area > table {
+        border-bottom: 1px solid #ddd;
+    }
+    .write-area > table tbody tr {
+        border: none;
+    }
+    .write-area > table tbody tr td {
+        display: block;
+        width: 100% !important;
+    }
+    .write-area > table tbody tr:first-child td:first-child {
+        padding: 1.875rem 1.25rem 0.3125rem !important;
+    }
+    .write-area > table tbody tr td:first-child {
+        padding: 0 1.25rem 0.3125rem !important;
+        font-size: 1.125rem;
+    }
+    .write-area > table tbody tr td:last-child {
+        padding: 0.3125rem 1.25rem 1.25rem !important;
+    }
+    .write-area > table tbody tr td input[type="text"] {
+        width: 100% !important;
+    }
+    .write-area > table tbody tr td input[type="date"] {
+        width: 100% !important;
+    }
+}
+
+
+
+
+/* 버튼 */
+.write-btn {
+    width:100%;
+    padding:3.75rem 0  6.25rem;
+    text-align:center;
+    overflow: hidden;
+}
+.write-btn a, .write-btn input {
+    font-size: 1rem;
+    padding: 0.375rem 0;
+    display: inline-block;
+    width: 7.5rem;
+    border-radius: 0.625rem;
+    margin: 0 0.625rem;
+}
+.writeBtn {
+    float: right;
+    border: 1px solid #ff92a8;
+    color:#ff92a8;
+    font-size:0.9375rem;
+    border-radius: 0.3125rem;
+    line-height: 1.875rem;
+    padding:0 1.25rem;
+    margin-left: 1.25rem;
+}
+.writeBtn:hover, .writeBtn:focus {
+    background-color:#fb3860;
+    border: 1px solid #fb3860;
+    color:#fff;
+}
+
+
+
+
+
+
+/* 버튼 */
+.viewBtn-wrap {
+    width:100%;
+    padding:3.125rem 0 5rem;
+    text-align:center;
+    overflow:hidden;
+}
+.viewBtn-wrap button {
+    font-weight: 500;
+    display:inline-block;
+    line-height: 2.25rem;
+    font-size: 1rem;
+    border:1px solid #ff92a8;
+    vertical-align: top;
+    background-color:#fff;
+    color: #ff92a8;
+    border-radius: 0.625rem;
+}
+.viewBtn-wrap button:hover {
+    border: 1px solid #fb3860;
+    background-color:#fb3860;
+    color:#fff;
+}
+.viewBtn-wrap button i {
+    top: 0;
+    font-size: 1rem;
+    line-height:inherit;
+}
+.viewBtn-wrap .nextBtn {
+    float: left;
+    padding: 0 1.5rem 0 1rem;
+}
+.viewBtn-wrap .prevBtn {
+    float: right;
+    padding: 0 1rem 0 1.5rem;
+}
+.viewBtn-wrap button.modifiedBtn {
+    border: 1px solid #fb3860;
+    background-color: #fb3860;
+    color: #fff;
+}
+.viewBtn-wrap button.listBtn,
+.viewBtn-wrap button.modifiedBtn,
+.viewBtn-wrap button.deleteBtn {
+    padding: 0 1rem;
+    margin: 0 0.1875rem;
+}
+/* 버튼 끝 */
+
+
+/* 페이징 */
+.list-paging {
+    width:100%;
+    padding:3.75rem 0 5rem;
+    text-align:center;
+    overflow:hidden;
+}
+.list-paging a {
+    display:inline-block;
+    width: 2.375rem;
+    line-height: 2.375rem;
+    height: 2.375rem;
+    font-size: 1rem;
+    border:1px solid #ff3d4a;
+    vertical-align: top;
+    background-color:#fff;
+    color: #ff3d4a;
+    border-radius: 0.3125rem;
+}
+.list-paging a:hover {
+    border: 1px solid #ff3d4a;
+    background-color:#ff3d4a;
+    color:#fff;
+}
+.list-paging a.active {
+    border:1px solid #ff3d4a;
+    background-color:#ff3d4a;
+    color:#fff;
+}
+/* 페이징 끝 */
+
+
+
+
+
+
+/* 개인정보취급방침, 이메일무단수집거부 */
+.terms {
+    position: relative;
+    width:1300px;
+    margin:3rem auto;
+}
+.terms > div {
+    width:100%;
+    padding:3.75rem 2.5rem;
+    border:#ff92a8 1px solid;
+    background:#f9f9f9;
+    border-radius: 0.625rem;
+}
+.terms > div > h1 {
+    padding-bottom: 1.563rem;
+    font-size:1.125rem;
+    line-height: 1.625rem;
+    font-weight:bold;
+    color:#333;
+}
+.terms > div > p {
+    font-size:1rem;
+    color:#555;
+    line-height: 1.5rem;
+    word-break: break-all;
+}
+.terms > div > p {
+    font-size:1rem;
+    color:#555;
+    line-height: 1.5rem;
+    word-break: break-all;
+}
+
+
+
+
+@media all and (max-width:479px) {
+    .terms > div {
+        padding: 2.5rem 1.875rem;
+    }
+    .terms > div > h1 {
+        line-height: 1.375rem;
+    }
+    .terms > div > p {
+        line-height: 1.8rem;
+    }
+}
+@media all and (max-width:600px) {
+    .write-btn a, .write-btn input {
+        width: 6rem;
+    }
+    .list-paging {
+        padding: 2.5rem 0 5rem;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+}
+@media all and (min-width:768px) and (max-width:991px) {
+}
+@media all and (min-width:992px) and (max-width:1299px) {
+}
+@media all and (max-width:1299px) {
+    .terms {
+        width: 100%;
+        padding: 1.125rem;
+    }
+}
+
+
+
+
+
+
+
+
+/*공유하기 ui*/
+.popover  {
+	text-align: center;
+	text-decoration: none;
+	width: 175px;
+	padding: 0px 0px 9px;
+}
+
+.urlcopy {
+	border: 1px solid #ff869c;
+	font-size: 15px;
+	position: relative;
+	top: 9px;
+	color: #ff869c;
+	padding: 3px 5px;
+	display: block;
+	z-index: 1;
+	text-decoration: none;
+}
+
+.urlcopy:hover {
+	color: #fff;
+	background-color: #fb3860;
+	border: 1px solid #fb3860;
+	text-decoration: none;
+}

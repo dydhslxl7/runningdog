@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+	<resultMap type="Member" id="resultMember">
+		<id property="uniqueNum" column="unique_num"/>
+		<result property="userId" column="user_id"/>
+		<result property="userPwd" column="user_pwd"/>
+		<result property="nickname" column="nickname"/>
+		<result property="phone" column="phone"/>
+		<result property="originProfile" column="origin_profile"/>
+		<result property="renameProfile" column="rename_profile"/>
+		<result property="joinDate" column="join_date"/>
+		<result property="lastAccessDate" column="last_access_date"/>
+		<result property="loginType" column="login_type"/>
+		<result property="adminChk" column="admin_chk"/>
+		<result property="loginLimit" column="login_limit"/>
+	</resultMap>
+
+	<resultMap type="Member" id="resultList">
+		<result property="uniqueNum" column="unique_num"/>
+		<result property="userId" column="user_id"/>
+		<result property="userPwd" column="user_pwd"/>
+		<result property="nickname" column="nickname"/>
+		<result property="phone" column="phone"/>
+		<result property="originProfile" column="origin_profile"/>
+		<result property="renameProfile" column="rename_profile"/>
+		<result property="joinDate" column="join_date"/>
+		<result property="lastAccessDate" column="last_access_date"/>
+		<result property="loginType" column="login_type"/>
+		<result property="adminChk" column="admin_chk"/>
+		<result property="loginLimit" column="login_limit"/>
+	</resultMap>
+	
+	<!-- 사용자 -->
+	<select id="selectLogin" parameterType="Member" resultMap="resultMember">
+		select * from member where user_id = #{userId}
+	</select>
+	
+	<select id="selectUserIdCheck" parameterType="Member" resultMap="resultMember">
+		select * from member where user_id = #{userId}
+	</select>
+	
+	<select id="selectUserIdPhoneCheck" parameterType="Member" resultMap="resultMember">
+		select * from member where user_id = #{userId} and phone = #{phone}
+	</select>
+	
+	<select id="selectNicknameCheckList" parameterType="Member" resultMap="resultList">
+		select * from member where  nickname like '%' || #{ nickname } || '%' and nickname != '관리자' and unique_num != #{uniqueNum}
+	</select>
+	
+	<select id="selectNicknameCount" parameterType="Member" resultType="_int">
+		select count(nickname) from member where  nickname like '%' || #{ nickname } || '%' and nickname != '관리자' and unique_num != #{uniqueNum}
+	</select>
+	
+	<insert id="insertMember" parameterType="Member">
+		insert into member values (UNIQUE_NUM_SEQ.NEXTVAL, #{userId}, #{userPwd}, #{nickname}, #{phone}, #{originProfile}, #{renameProfile}, DEFAULT, DEFAULT, null, DEFAULT, DEFAULT)
+	</insert>
+	
+	<update id="updateMemberPwd" parameterType="Member">
+		update member set user_pwd = #{userPwd} where user_id = #{userId} and phone = #{phone}
+	</update>
+	
+	<update id="updatemyinfo" parameterType="Member">
+		update member set nickname = #{nickname}, phone = #{phone}, origin_profile = #{originProfile}, rename_profile = #{renameProfile}, last_access_date = #{lastAccessDate}, login_type = #{loginType} where user_id = #{userId}
+	</update>
+	
+	<update id="updateLastAccessDate" parameterType="Member">
+		update member set last_access_date = #{lastAccessDate},
+		
+  		<if test="'renameProfile' != null">
+  			rename_profile = #{renameProfile},
+		</if>
+		
+		login_type = #{loginType} where user_id = #{userId}
+	</update>
+	
+	<delete id="deleteMember" parameterType="Member">
+		delete member where UNIQUE_NUM = #{uniqueNum}
+	</delete>
+	
+	
+	
+	
+	<!-- 간편로그인, 회원가입, 소셜마이페이지 -->
+	<select id="insertFacabookMember" parameterType="Member">
+		insert into member values (UNIQUE_NUM_SEQ.NEXTVAL, #{userId}, null, #{nickname}, #{phone}, #{originProfile}, #{renameProfile}, DEFAULT, DEFAULT, null, DEFAULT, DEFAULT)
+	</select>
+	
+	<update id="updateSocialMyinfo" parameterType="Member">
+		update member set nickname = #{nickname}, phone = #{phone}, origin_profile = #{originProfile}, rename_profile = #{renameProfile} where user_id = #{userId}
+	</update>
+	
+	
+	
+	<!-- 공용 -->
+	<select id="selectNicknameCheck" parameterType="Member" resultMap="resultMember">
+		select * from member where nickname = #{nickname}
+	</select>
+	
+	<select id="selectPhoneCheck" parameterType="Member" resultMap="resultMember">
+		select * from member where phone = #{phone}
+	</select>
+	
+	<select id="selectUserPwdCheck" parameterType="Member" resultMap="resultMember">
+		select * from member where user_id = #{userId}
+	</select>
+	
+	<insert id="insertLeaveMember" parameterType="Member">
+		INSERT INTO LEAVE_MEMBER (LEAVE_UNIQUE_NUM, LEAVE_USER_ID, LEAVE_USER_PWD, LEAVE_NICKNAME, LEAVE_PHONE, LEAVE_ORIGIN_PROFILE, LEAVE_RENAME_PROFILE, LEAVE_JOIN_DATE, LEAVE_LOGIN_TYPE)
+		SELECT UNIQUE_NUM, USER_ID, USER_PWD, NICKNAME, PHONE, ORIGIN_PROFILE, RENAME_PROFILE, JOIN_DATE, LOGIN_TYPE
+		FROM MEMBER
+		WHERE UNIQUE_NUM = #{uniqueNum}
+	</insert>
+	
+	<select id="selectRenameProfile" parameterType="_int" resultType="string">
+		select RENAME_PROFILE FROM MEMBER WHERE UNIQUE_NUM = #{unique_num}
+	</select>
+	
+	
+	
+	<!-- 관리자 -->
+	<select id="selectMemberList" resultType="Member" parameterType="com.kh.runningdog.member.model.vo.MemberPage">
+		SELECT *
+			FROM (SELECT ROWNUM RNUM, UNIQUE_NUM, USER_ID, NICKNAME, PHONE, ORIGIN_PROFILE,
+            RENAME_PROFILE,JOIN_DATE, LAST_ACCESS_DATE, LOGIN_TYPE, LOGIN_LIMIT, ADMIN_CHK
+            FROM (SELECT * FROM MEMBER
+        	<if test="search == 'userId'">
+				WHERE USER_ID LIKE '%' ||  #{keyword} || '%'
+			</if>
+	  		<if test="search == 'nickname'">
+	  			WHERE NICKNAME LIKE '%' ||  #{keyword} || '%'
+			</if>
+	  		<if test="search == 'phone'">
+	  			WHERE PHONE LIKE '%' ||  #{keyword} || '%'
+			</if>
+            ORDER BY JOIN_DATE DESC))
+            <![CDATA[
+	  		WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+	  		]]>
+	</select>
+	
+	<select id="selectMemberCount" resultType="_int" parameterType="com.kh.runningdog.member.model.vo.MemberPage">
+		select count(*) from member
+	</select>
+	
+	<select id="selectUserOne" parameterType="_int" resultType="Member">
+		select * from member where unique_num = #{uniqueNum}
+	</select>
+	
+	<insert id="adminInsertMember" parameterType="Member">
+		insert into member values (UNIQUE_NUM_SEQ.NEXTVAL, #{userId}, #{userPwd}, #{nickname}, #{phone}, #{originProfile}, #{renameProfile}, DEFAULT, DEFAULT, null, #{adminChk}, DEFAULT)
+	</insert>
+	
+	<insert id="adminUpdateMember" parameterType="Member">
+		update member set nickname = #{nickname}, phone = #{phone}, origin_profile = #{originProfile}, rename_profile = #{renameProfile}, admin_chk = #{adminChk}, login_limit = #{loginLimit} where unique_num = #{uniqueNum}
+	</insert>
+	
+	<delete id="adminLeaveMember" parameterType="Member">
+		delete member where unique_num = #{uniqueNum}
+	</delete>
+	
+	<delete id="insertLeaveMemberChk" parameterType="_int">
+		INSERT INTO LEAVE_MEMBER (LEAVE_UNIQUE_NUM, LEAVE_USER_ID, LEAVE_USER_PWD, LEAVE_NICKNAME, LEAVE_PHONE, LEAVE_ORIGIN_PROFILE, LEAVE_RENAME_PROFILE, LEAVE_JOIN_DATE, LEAVE_LOGIN_TYPE)
+		SELECT UNIQUE_NUM, USER_ID, USER_PWD, NICKNAME, PHONE, ORIGIN_PROFILE, RENAME_PROFILE, JOIN_DATE, LOGIN_TYPE
+		FROM MEMBER
+		WHERE UNIQUE_NUM = #{temp}
+	</delete>
+	
+	<delete id="leaveMemberChk" parameterType="_int">
+		delete member where unique_num = #{temp}
+	</delete>
+	
+	
+</mapper>

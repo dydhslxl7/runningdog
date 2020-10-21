@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="leaveMemberMapper">
+	
+	<resultMap type="LeaveMember" id="resultLeaveMember">
+		<id property="leaveUniqueNum" column="leave_unique_num"/>
+		<result property="leaveUserId" column="leave_user_id"/>
+		<result property="leaveUserPwd" column="leave_user_pwd"/>
+		<result property="leaveNickname" column="leave_nickname"/>
+		<result property="leavePhone" column="leave_phone"/>
+		<result property="leaveOriginProfile" column="leave_origin_profile"/>
+		<result property="leaveRenameProfile" column="leave_rename_profile"/>
+		<result property="leaveJoinDate" column="leave_join_date"/>
+		<result property="leaveDate" column="leave_date"/>
+		<result property="leaveLoginType" column="leave_login_type"/>
+	</resultMap>
+
+	<resultMap type="LeaveMember" id="resultLeaveList">
+		<result property="leaveUniqueNum" column="leave_unique_num"/>
+		<result property="leaveUserId" column="leave_user_id"/>
+		<result property="leaveUserPwd" column="leave_user_pwd"/>
+		<result property="leaveNickname" column="leave_nickname"/>
+		<result property="leavePhone" column="leave_phone"/>
+		<result property="leaveOriginProfile" column="leave_origin_profile"/>
+		<result property="leaveRenameProfile" column="leave_rename_profile"/>
+		<result property="leaveJoinDate" column="leave_join_date"/>
+		<result property="leaveDate" column="leave_date"/>
+		<result property="leaveLoginType" column="leave_login_type"/>
+	</resultMap>
+	
+	<select id="selectMemberLeaveList" resultType="LeaveMember" parameterType="com.kh.runningdog.member.model.vo.MemberPage">
+		SELECT *
+			FROM (SELECT ROWNUM RNUM, LEAVE_UNIQUE_NUM, LEAVE_USER_ID, LEAVE_NICKNAME, LEAVE_PHONE, LEAVE_ORIGIN_PROFILE,
+            LEAVE_RENAME_PROFILE, LEAVE_JOIN_DATE, LEAVE_DATE, LEAVE_LOGIN_TYPE
+            FROM (SELECT * FROM LEAVE_MEMBER
+        	<if test="search == 'userId'">
+				WHERE LEAVE_USER_ID LIKE '%' || #{keyword} || '%'
+			</if>
+	  		<if test="search == 'nickname'">
+	  			WHERE LEAVE_NICKNAME LIKE '%' || #{keyword} || '%'
+			</if>
+	  		<if test="search == 'phone'">
+	  			WHERE LEAVE_PHONE LIKE '%' || #{keyword} || '%'
+			</if>
+            ORDER BY LEAVE_JOIN_DATE DESC))
+            <![CDATA[
+	  		WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+	  		]]>
+	</select>
+	
+	<select id="selectMemberLeaveCount" resultType="_int" parameterType="com.kh.runningdog.member.model.vo.MemberPage">
+		select count(*) from leave_member
+	</select>
+	
+	<select id="selectLeaveUserOne" parameterType="_int" resultType="LeaveMember">
+		select * from leave_member where leave_unique_num = #{leaveUniqueNum}
+	</select>
+	
+	<delete id="deleteChk" parameterType="_int">
+		delete leave_member where leave_unique_num = #{temp}
+	</delete>
+	
+	
+</mapper>

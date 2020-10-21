@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dreplyMapper">
+
+	<resultMap type="Dreply" id="resultDreply">
+		<id column="dre_num" property="dreNum" />
+		<result column="d_num" property="dNum" />
+		<result column="dre_writer" property="dreWriter" />
+		<result column="dre_content" property="dreContent" />
+		<result column="dre_date" property="dreDate" />
+		<result column="dre_mdate" property="dreMdate" />
+		<result column="dre_parents" property="dreParents" />
+		<result column="dre_level" property="dreLevel" />
+		<result column="unique_num" property="uniqueNum" />
+		<result column="dre_delete" property="dreDelete" />
+		
+	</resultMap>
+	
+	
+	<select id="selectListCount" parameterType="_int" resultType="int">
+		SELECT COUNT(*)
+		FROM DREPLY
+		WHERE d_num = #{ dNum }
+		
+	</select>
+	
+	<select id="selectDreplyList" parameterType="_int" resultType="Dreply">
+		SELECT DRE_NUM, D_NUM, DRE_WRITER, DRE_CONTENT, DRE_DATE, DRE_MDATE,
+			   DRE_PARENTS, DRE_LEVEL, UNIQUE_NUM, DRE_DELETE
+		FROM DREPLY
+		WHERE D_NUM = #{ dNum }
+		ORDER BY DRE_PARENTS ASC, DRE_NUM ASC 
+	</select>
+	
+	<insert id="insertDreply" parameterType="Dreply">
+		INSERT INTO DREPLY
+		VALUES (DRE_NUM_SEQ.NEXTVAL,
+			   #{ dNum },
+			   #{ dreWriter },
+			   #{ dreContent },
+			   (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+			   (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+			   DRE_NUM_SEQ.NEXTVAL,
+			   1,
+			   #{ uniqueNum },
+			   DEFAULT)
+	</insert>
+	
+	<insert id="insertDreplyLevel" parameterType="Dreply">
+		INSERT INTO DREPLY
+		VALUES (DRE_NUM_SEQ.NEXTVAL,
+				#{ dNum },
+				#{ dreWriter },
+				#{ dreContent },
+				(SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+				(SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+				#{ dreNum },
+				2,
+				#{ uniqueNum },
+				DEFAULT)
+	</insert>
+	
+	<update id="updateDreply" parameterType="Dreply">
+		UPDATE DREPLY SET
+			   DRE_CONTENT = #{ dreContent },
+			   DRE_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL)
+		WHERE DRE_NUM = ${ dreNum }
+	</update>
+	
+	<update id = "updateDreplyDel" parameterType="Dreply">
+		UPDATE DREPLY SET
+			   DRE_DELETE = 'y',
+			   DRE_CONTENT = '삭제된 댓글 입니다',
+			   DRE_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL)
+		WHERE DRE_NUM = #{ dreNum }
+	</update>
+</mapper>

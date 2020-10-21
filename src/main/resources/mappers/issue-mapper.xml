@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="issueMapper">
+
+	<delete id="deleteIssue">
+		DELETE ISSUE
+	</delete>
+
+	<insert id="insertIssueLatest" parameterType="java.util.List">
+		<foreach item="item" collection="list" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" ">
+		INTO ISSUE 
+		(ISSUE_ORDER, PARTNER_NAME, PARTNER_IMG, ISSUE_TITLE, 
+		ISSUE_THUMBNAIL, ISSUE_DATE, ISSUE_LINK)
+		VALUES (
+			'order', #{item.partnerName}, #{item.partnerImg}, #{item.issueTitle}, 
+			#{item.issueThumbnail}, #{item.issueDate}, #{item.issueLink}
+		)
+		</foreach>
+	</insert>
+	
+	<insert id="insertIssuePopular" parameterType="java.util.List">
+		<foreach item="item" collection="list" open="INSERT ALL"  close="SELECT * FROM DUAL" separator=" ">
+		INTO ISSUE 
+		(ISSUE_ORDER, PARTNER_NAME, PARTNER_IMG, ISSUE_TITLE, 
+		ISSUE_THUMBNAIL, ISSUE_READCOUNT, ISSUE_LINK)
+		VALUES (
+			'view', #{item.partnerName}, #{item.partnerImg}, #{item.issueTitle}, 
+			#{item.issueThumbnail}, #{item.issueReadcount}, #{item.issueLink}
+		)
+		</foreach>
+	</insert>
+	
+	<select id="selectList" resultType="Issue" parameterType="com.kh.runningdog.notice.model.vo.NoticePage">
+		<if test="search == 'order'">
+			SELECT * FROM ( SELECT ROWNUM RNUM, ISSUE_ORDER, PARTNER_NAME, PARTNER_IMG, ISSUE_TITLE, 
+					ISSUE_THUMBNAIL, ISSUE_DATE, ISSUE_LINK FROM
+	        		(SELECT * FROM ISSUE WHERE ISSUE_ORDER = 'order' ORDER BY ISSUE_DATE DESC))
+		</if>
+		<if test="search == 'view'">
+			SELECT * FROM ( SELECT ROWNUM RNUM, ISSUE_ORDER, PARTNER_NAME, PARTNER_IMG, ISSUE_TITLE, 
+					ISSUE_THUMBNAIL, ISSUE_READCOUNT, ISSUE_LINK FROM
+			        (SELECT * FROM ISSUE WHERE ISSUE_ORDER = 'view' ORDER BY ISSUE_READCOUNT DESC))
+		</if>
+		<![CDATA[
+	  		WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+	    ]]>	
+	</select>
+
+	<select id="selectMainList" resultType="Issue">
+		<![CDATA[
+			SELECT * FROM (
+			    SELECT * FROM ISSUE
+			    WHERE ISSUE_ORDER = 'order'
+			    ORDER BY ISSUE_DATE DESC)
+			WHERE ROWNUM <= 8
+		]]>	
+	</select>
+
+</mapper>

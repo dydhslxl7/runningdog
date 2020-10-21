@@ -1,0 +1,811 @@
+@charset "utf-8";
+
+/*member 공용*/
+.member_wrap {
+    position: relative;
+    width:100%;
+}
+.animalBg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(/runningdog/resources/images/common/animalBg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0.4;
+    height: 110%;
+}
+
+
+
+/*로그인*/
+.login_wrap {
+    max-width: 460px;
+    margin: 3.75rem auto;
+    text-align: center;
+    padding: 2.5rem 1.875rem;
+    -moz-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(237, 159, 175, 0.1);
+    -webkit-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(237, 159, 175, 0.1);
+    box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(237, 159, 175, 0.1);
+    background-color: #fff;
+}
+.login_wrap h1 {
+    padding-bottom:0.625rem;
+    cursor: pointer;
+}
+.login_wrap .loginInfo {
+    position: relative;
+    width: 100%;
+}
+.login_wrap .loginInfo h4 {
+    margin-top: 1.25rem;
+    text-align: left;
+}
+.login_wrap .loginInfo > div {
+    position: relative;
+    width:100%;
+    margin-top: 0.625rem;
+    overflow: hidden;
+    line-height: 3.125rem;
+    border: 1px solid #ff92a8;
+}
+.login_wrap .loginInfo > div span:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.125rem;
+    height: 3rem;
+    line-height: 3rem;
+    float: left;
+    background-color: #f1f1f1;
+}
+.login_wrap .loginInfo > div span:first-child i {
+    font-size: 1.5rem;
+    color: #888;
+    line-height: 3rem;
+}
+.login_wrap .loginInfo > div span:last-child {
+    display: block;
+    width: 100%;
+    height: 3rem;
+    padding-left: 3.75rem;
+    text-align: left;
+}
+.login_wrap .loginInfo > div span:last-child input {
+    border: none;
+    height: 3rem;
+    z-index: -1;
+}
+.login_wrap .loginInfo > div span:last-child input[type="file"] {
+    height: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.login_wrap .loginInfo > div span.genderChk label {
+    margin-right: 20px;
+    padding: 0 15px;
+}
+.login_wrap .loginInfo > div span.genderChk label input[type="radio"] {
+    width:20px;
+    height:20px;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+}
+.login_wrap .loginInfo > button.userChk {
+    float: right;
+    width: 180px;
+    height: 38px;
+    vertical-align: middle;
+    font-size: 14px;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+    margin-bottom: 20px;
+}
+.login_wrap .loginInfo > button.userChk:hover {
+    border: 1px solid #fb3860;
+    background-color: #fb3860;
+}
+.login_wrap .loginInfo > p {}
+.login_wrap .loginInfo > p#pwdWarning {
+    margin-bottom: 1.875rem;
+}
+.login_wrap .loginInfo > p span {
+    display: block;
+    font-size: 0.9375rem;
+    color: red;
+    text-align: left;
+    margin: 0.375rem 0.625rem;
+}
+.login_wrap .loginInfo > p.privacyCke label {
+    cursor: pointer;
+}
+.login_wrap .loginInfo > p.privacyCke label a {
+    color: #0394fb;
+    text-decoration-line: underline;
+}
+.login_wrap .loginInfo > p input[type="checkbox"] {
+    width:20px;
+    height:20px;
+    margin: 0;
+}
+.login_wrap .loginInfo > dl {
+    overflow: hidden;
+    margin: 0.625rem 0 0.9375rem;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.75rem;
+}
+.login_wrap .loginInfo > dl dt {
+    float: left;
+    text-align: left;
+}
+.login_wrap .loginInfo > dl dt input[type="checkbox"] {
+    width:20px;
+    height:20px;
+    margin: 0;
+    vertical-align: middle;
+}
+.login_wrap .loginInfo > dl dd {
+    float: right;
+    text-align: right;
+    color: #0394fb;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+.login_wrap .loginInfo > dl dd i {
+    line-height: inherit;
+}
+.login_wrap .loginInfo .login_btn {
+    display: block;
+    width: 100%;
+    height: 3.125rem;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.login_wrap .loginInfo .join_btn {
+    display: block;
+    width: 100%;
+    height: 3.125rem;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.login_wrap .loginInfo .join_btn:hover {
+    border: 1px solid #fb3860;
+    background-color: #fb3860;
+}
+.login_wrap a.join_btn {
+    display: block;
+    width: 100%;
+    height: 3.125rem;
+    margin-top: 0.9375rem;
+    line-height: 3.125rem;
+    color: #fff;
+    border: 1px solid #555;
+    background-color: #555;
+}
+.login_wrap .snsLogin {
+    position: relative;
+    width: 100%;
+    margin-top: 0.9375rem;
+    padding-top: 0.9375rem;
+}
+.login_wrap .snsLogin:before {
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    right:0;
+    border-top: 1px solid #aaa;
+}
+.login_wrap .snsLogin li {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 3.125rem;
+    line-height: 3.125rem;
+    color: #fff;
+    margin-top: 0.625rem;
+    cursor: pointer;
+}
+.login_wrap .snsLogin li span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.125rem;
+    height: 3.125rem;
+    float: left;
+    border-right:1px solid #fff;
+    line-height: 3rem;
+}
+.login_wrap .snsLogin li span i {
+    font-size: 1.5rem;
+    line-height: 3rem;
+}
+.login_wrap .snsLogin li.kLogin {
+    background-color: #ffcd00;
+    color: #333;
+    margin-top: 0;
+}
+.login_wrap .snsLogin li.nLogin {
+    background-color: #1ec800;
+}
+.login_wrap .snsLogin li.fLogin {
+    background-color: #4867aa;
+}
+.login_wrap .privacyCke_con {
+    width: 100%;
+}
+.login_wrap .privacyCke_con textarea {
+    display: none;
+    position: relative;
+    margin-top: 0.9375rem;
+    padding: 0.9375rem 0.625rem;
+    width: 100%;
+    min-height: 12.5rem;
+    max-height: 12.5rem;
+    background-color: #f3f3f3;
+    border: 1px solid #aaa;
+    font-size: 0.875rem;
+    color: #555;
+}
+.login_wrap .privacyCke_con textarea.on {
+    display: block;
+}
+.login_wrap .loginInfo .find_btn, .login_wrap .loginInfo .pwdChange_btn {
+    display: block;
+    width: 100%;
+    height: 3.125rem;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+    margin-top: 0.9375rem;
+}
+
+
+.login_wrap .idFineView {
+	position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 2.5rem 0.625rem;
+}
+.login_wrap .pwdFindView {
+	position: relative;
+    width: 100%;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 2.5rem 0.625rem;
+    display:none;
+}
+.login_wrap .idFineView p, .login_wrap .pwdFindView p {
+    width: 100%;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+}
+.login_wrap .idFineView a, .login_wrap .pwdFindView a {
+    display: inline-block;
+    line-height: 2.5rem;
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+    padding: 0 2.5rem;
+    border-radius: 0.3125rem;
+}
+
+@media all and (max-width:479px) {
+    .login_wrap {
+        max-width: 90%;
+    }
+    
+}
+
+
+
+
+
+
+/*마이페이지*/
+.mypage_area {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.mypage_area .mypage_title {
+    margin-bottom: 1.875rem;
+    text-align: center;
+    font-size: 1.875rem;
+    font-weight: 500;
+    line-height: 2.5rem;
+    color: #222;
+}
+/*나의 프로필 수정*/
+.InfoModify_table {
+    width: 700px;
+    border-top: 1px solid #333;
+    margin: 0 auto;
+}
+.InfoModify_table tbody {
+    width: 100%;
+}
+.InfoModify_table tbody tr {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+.InfoModify_table tbody tr td {
+    padding: 0.9375rem 0;
+}
+.InfoModify_table tbody tr td:first-child {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+.InfoModify_table tbody tr td:last-child {
+    text-align: left;
+    font-size: 0.9375rem;
+    color: #777;
+}
+.InfoModify_table tbody tr td input {
+    display: inline-block;
+}
+.InfoModify_table tbody tr td input[type="file"] {
+    height: auto;
+    line-height: normal;
+    border: 1px solid #999;
+}
+.InfoModify_table tbody tr td.gender label {
+    margin-right: 1.25rem;
+    font-size: 1.125rem;
+    padding: 0.1875rem 0.625rem;
+}
+.InfoModify_table tbody tr td.gender label input[type="radio"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+.InfoModify_table tbody tr td.profilImage {
+	line-height: 30px;
+	word-break: break-all;
+}
+.InfoModify_table tbody tr td.profilImage label {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.InfoModify_table tbody tr td.profilImage label input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+.InfoModify_table tbody tr td.newPwd button {
+    border: 1px solid #999;
+    background-color: #999;
+    color: #fff;
+    font-size: 1rem;
+    height: 2.25rem;
+    padding: 0 0.9375rem;
+    border-radius: 0.3125rem;
+}
+.InfoModify_table tbody tr td.newPwd button:hover {
+    border: 1px solid #555;
+    background-color: #555;
+}
+
+.InfoModify_table tbody tr td p span {
+    display: block;
+    font-size: 0.9375rem;
+    color: red;
+    text-align: left;
+    margin: 0.375rem 0.625rem;
+}
+
+
+
+@media all and (max-width:479px) {
+    
+}
+@media all and (max-width:600px) {
+    .InfoModify_table {
+        border-bottom: 1px solid #ccc;
+    }
+    .mypage_area .mypage_title {
+        margin: 1.25rem 0;
+        font-size: 1.5rem;
+    }
+    .InfoModify_table tbody tr {
+        border-bottom: none;
+    }
+    .InfoModify_table tbody tr td {
+        display: block;
+        width: 100% !important;
+        text-align: left !important;
+    }
+    .InfoModify_table tbody tr:first-child td:first-child {
+        padding: 1.875rem 1.25rem 0.3125rem !important;
+    }
+    .InfoModify_table tbody tr td:first-child {
+        padding: 0 1.25rem 0.3125rem !important;
+        font-size: 1.125rem;
+    }
+    .InfoModify_table tbody tr td:last-child {
+        padding: 0.3125rem 1.25rem 1.25rem !important;
+    }
+    .InfoModify_table tr td input {
+        width: 100% !important;
+    }
+    .mypage_area .write-btn {
+        width: 100%;
+        padding: 2.813rem 0 6.25rem;
+        text-align: center;
+        overflow: hidden;
+    }
+}
+@media all and (max-width:700px) {
+    .InfoModify_table {
+        width: 100%;
+    }
+}
+/*마이페이지 정보수정 끝*/
+
+
+
+
+/*채팅*/
+.chattingList {
+    border-top: 1px solid #333;
+    width: 100%;
+    margin-bottom: 200px;
+}
+.chattingList tbody {
+    width: 100%;
+}
+.chattingList tbody tr {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+.chattingList tbody tr td {
+    padding: 0.9375rem;
+}
+.chattingList tbody tr td:last-child {
+	text-align:center;
+}
+.chattingList tbody tr td:last-child span {
+	background-color: #fb3860;
+	width: 30px;
+	height:30px;
+	line-height:30px;
+	border-radius:50%;
+	display:inline-block;
+	color:#fff;
+}
+.chattingList tbody tr td.img:first-child {
+}
+.chattingList tbody tr td.img:first-child img {
+    width: 100%;
+    border-radius: 50%;
+}
+.chattingList tbody tr td.img img {
+    width: 100%;
+}
+.chattingList tbody tr td.title h2 {
+    font-size: 1.125rem;
+    color: #333;
+    margin-bottom: 0.3125rem;
+}
+.chattingList tbody tr td.title h2 span {
+    font-size: 0.9375rem;
+    color: #999;
+    font-weight: 400;
+    font-family:'Noto Sans KR';
+    margin-left: 1.25rem;
+}
+.chattingList tbody tr td.title p {
+    font-size: 1rem;
+    color: #333;
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.625rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.chattingList tbody tr td.marker, .chattingList tbody tr td.marker2 {
+    text-align: center;
+}
+.chattingList tbody tr td.marker span {
+    background-color: #00d4da;
+    border-radius: 0.625rem;
+    padding: 0 0.9375rem;
+    line-height: 1.875rem;
+    display: inline-block;
+    color: #fff;
+    font-size: 0.9375rem;
+}
+.chattingList tbody tr td.marker2 span {
+    background-color: #fb3860;
+    border-radius: 0.625rem;
+    padding: 0 0.9375rem;
+    line-height: 1.875rem;
+    display: inline-block;
+    color: #fff;
+    font-size: 0.9375rem;
+}
+.chattingList tbody tr td.list-no {
+    padding: 9.375rem 0;
+    text-align: center;
+}
+.chattingList tbody tr td.list-no h1 {
+    font-size: 1.125rem;
+}
+
+
+
+/*채팅 뷰*/
+.chattingView_wrap {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 0.625rem;
+    border: 1px solid #ff92a8;
+    margin-bottom: 3rem;
+}
+.chattingView_wrap .userInfo {
+    width: 100%;
+    font-size: 0;
+    text-align: left;
+    min-height: 4.375rem;
+    border-bottom:2px solid #ccc;
+}
+.chattingView_wrap .userInfo dt {
+    display: inline-block;
+    width: 15%;
+    min-height: inherit;
+    vertical-align: top;
+}
+.chattingView_wrap .userInfo dt > button {
+    font-size: 1.875rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: #333;
+    min-height: inherit;
+    padding: 0 1.25rem;
+}
+.chattingView_wrap .userInfo dt.chattingController {
+    position: relative;
+    text-align: right;
+}
+.chattingView_wrap .userInfo dt.chattingController > div {
+    position: absolute;
+    top: 90%;
+    right: 0.625rem;
+    width: 8.75rem;
+    background-color: #f1f1f1;
+    border: 1px solid #999;
+    padding: 0.3125rem;
+}
+.chattingView_wrap .userInfo dt.chattingController > div:after {
+    content: '';
+    position: absolute;
+    top: -0.5625rem;
+    right: 1.25rem;
+    width: 0.9375rem;
+    height: 0.9375rem;
+    background-color: #999;
+    transform: rotate(45deg);
+    z-index: -1;
+}
+.chattingView_wrap .userInfo dt.chattingController > div button {
+    width: 100%;
+    display: block;
+    font-size: 0.9375rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0.5rem;
+    text-align: left;
+    font-weight: 500;
+}
+.chattingView_wrap .userInfo dt.chattingController > div button:hover {
+    background-color: #ccc;
+}
+.chattingView_wrap .userInfo dd {
+    display: inline-block;
+    width: 70%;
+    min-height: inherit;
+}
+.chattingView_wrap .userInfo dd h2 {
+    font-size: 1.25rem;
+    margin: 0.625rem 0 0.3125rem;
+}
+.chattingView_wrap .userInfo dd h2 span {
+    font-size: 0.875rem;
+    font-family: 'Noto Sans KR';
+}
+.chattingView_wrap .userInfo dd p {
+    font-size: 1rem;
+    color: #999;
+}
+.chattingView_wrap .chattingView {
+    overflow: hidden;
+    width: 100%;
+    padding: 0.9375rem;
+    min-height: 100%;
+    height: 43.75rem;
+    max-height: 43.75rem;
+    overflow-y: scroll;
+}
+.chattingView_wrap .chattingView > legend {
+    border-bottom:1px dotted #ccc;
+    text-align: center;
+    display: block;
+    margin:1.25rem 0 0.625rem;
+    padding-bottom:0.625rem;
+    color: #999;
+}
+.chattingView_wrap .chattingView > div {
+    background-color: #d4feff;
+    border: 1px solid #0ab7bb;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+.chattingView_wrap .chattingView > div h3 {
+    font-size: 1.125rem;
+    color: #0ab7bb;
+    margin-bottom: 0.3125rem;
+    font-family:'Noto Sans KR';
+}
+.chattingView_wrap .chattingView > div p {
+    color: #0ab7bb;
+}
+.chattingView_wrap .chattingView .user_left, .chattingView_wrap .chattingView .user_right {
+    overflow: hidden;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.chattingView_wrap .chattingView .myChatting dt {
+    float: right;
+    max-width: 70%;
+    background-color: #ff92a8;
+    color: #fff;
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    min-height: 3.75rem;
+}
+.chattingView_wrap .chattingView .myChatting dd {
+    float: right;
+    max-width: 30%;
+    margin-right: 0.9375rem;
+    color: #999;
+    min-height: 3.75rem;
+    line-height: 3.75rem;
+}
+.chattingView_wrap .chattingView .user_left dt {
+    width: 3.75rem;
+    float: left;
+    margin-right: 1.25rem;
+    max-width: 30%;
+}
+.chattingView_wrap .chattingView .user_left dt img {
+    width: 100%;
+}
+.chattingView_wrap .chattingView .user_left dd {
+    float: left;
+    max-width: 70%;
+}
+.chattingView_wrap .chattingView .user_left dd p {
+    float: left;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    min-height: 3.75rem;
+    max-width: 80%;
+}
+.chattingView_wrap .chattingView .user_left dd span {
+    float: left;
+    margin-left: 0.9375rem;
+    color: #999;
+    min-height: 3.75rem;
+    line-height: 3.75rem;
+}
+.chattingView_wrap .cmt_body {
+    overflow: hidden;
+    padding:  0.625rem 0 0.625rem 1.875rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ccc;
+}
+.chattingView_wrap .cmt_body div {
+    width: 90%;
+    float: left;
+    overflow: hidden;
+}
+.chattingView_wrap .cmt_body div textarea {
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    color: #777;
+    border-radius: 0.3125rem;
+    resize: none;
+    min-height: 42px;
+    max-height: 42px;
+    line-height: 42px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 0 0.9375rem;
+}
+.chattingView_wrap .cmt_body button[type="submit"] {
+    width: 10%;
+    float: right;
+    min-height: 42px;
+    max-height: 42px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: #333;
+    padding: 0.1875rem 1.25rem;
+    font-size: 1.563rem;
+    font-weight: 500;
+    border-radius: 0.3125rem;
+}
+@media all and (max-width:479px) {
+    .chattingList tbody tr td.img:first-child {
+        padding: 0.625rem;
+    }
+    .chattingView_wrap .userInfo dt {
+        width: 20%;
+    }
+    .chattingView_wrap .userInfo dd h2 {
+        font-size: 1.25rem;
+        margin: 0.625rem 0 0;
+    }
+    .chattingView_wrap .userInfo dd {
+        width: 60%;
+    }
+    .chattingView_wrap .chattingView .user_left dd span {
+        font-size: 0.8125rem;
+        min-height: auto;
+        line-height: unset;
+    }
+    .chattingView_wrap .chattingView .user_left dt {
+        margin-right: 2%;
+        max-width: 15%;
+    }
+    .chattingView_wrap .chattingView .user_left dd {
+        max-width: 83%;
+    }
+    .chattingView_wrap .chattingView .user_left dd p {
+        padding: 0.75rem;
+        line-height: 1.438rem;
+    }
+    .chattingView_wrap .chattingView .myChatting dd {
+        font-size: 0.8125rem;
+    }
+    .chattingView_wrap .chattingView .myChatting dt {
+        padding: 0.75rem;
+        line-height: 1.438rem;
+    }
+    .chattingView_wrap .cmt_body div {
+        width: 80%;
+    }
+    .chattingView_wrap .cmt_body button[type="submit"] {
+        width: 20%;
+    }
+}
+@media all and (max-width:600px) {
+    .chattingList colgroup col:first-child {
+        width: 20%;
+    }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visitCounter">
+	
+	<insert id="VisitCountDAO" parameterType="com.kh.runningdog.visitCount.model.vo.VisitCountVo">
+		INSERT INTO TB_VISITOR (VISIT_ID, VISIT_IP, VISIT_TIME,
+		<if test="visit_refer != null and visit_refer !=''">
+			VISIT_REFER,
+		</if>
+		VISIT_AGENT
+		) VALUES
+		( VISITOR_SEQ.NEXTVAL, #{visit_ip}, SYSDATETIME,
+		<if test="visit_refer != null and visit_refer !=''">
+			#{visit_refer},
+		</if>
+		#{visit_agent}
+		)
+	</insert>
+	
+</mapper>

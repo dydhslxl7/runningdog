@@ -1,0 +1,690 @@
+@charset "utf-8";
+/*메인비주얼*/
+#main_visual {
+    max-width: 1920px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+}
+#main_visual .swiper-wrapper .swiper-slide {
+    height: 41.25rem;
+    max-width: 120rem;
+    margin:0 auto;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: top center;
+}
+#main_visual .swiper-wrapper > div.first {
+    background-image: url('/runningdog/resources/images/main/main_visual01.jpg');
+}
+#main_visual .swiper-wrapper > div.middle {
+    background-image: url('/runningdog/resources/images/main/main_visual02.jpg');
+}
+#main_visual .swiper-wrapper > div.last {
+    background-image: url('/runningdog/resources/images/main/main_visual03.jpg');
+    text-align: right;
+}
+#main_visual .swiper-wrapper > div > div {
+    width: 1300px;
+    padding-top: 16rem;
+    margin: 0 auto;
+    text-align: right;
+}
+#main_visual .swiper-wrapper > div.middle > div {
+    text-align: left;
+}
+#main_visual .swiper-pagination {
+    top: unset;
+    bottom: 0 !important;
+}
+#main_visual .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background-color: #fb3860;
+}
+#main_visual .swiper-button-next {
+    right: 2.5rem;
+}
+#main_visual .swiper-button-prev {
+    left: 2.5rem;
+}
+#main_visual .swiper-button-next, #main_visual .swiper-button-prev {
+    color: #fff;
+    font-size: 3.125rem;
+    line-height: 5rem;
+    width: 3.125rem;
+    height: 5rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+}
+#main_visual .swiper-button-next:hover, #main_visual .swiper-button-prev:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+.main_visual h2 {
+    padding-bottom: 1.563rem;
+    font-size: 3.125rem;
+    color: #333;
+    letter-spacing: -0.5px;
+    line-height: 3.125rem;
+    font-weight: 400;
+}
+.main_visual p {
+    font-size: 1.25rem;
+    color: #333;
+    line-height: 1.688rem;
+    padding: 0 0 1.875rem;
+}
+.main_visual a {
+    display: inline-block;
+    text-align: center;
+    width: 12rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1rem;
+    border-radius: 1.875rem;
+    background-color: #ff92a8;
+    color:#fff;
+}
+.main_visual a:hover {
+    color:#fff;
+}
+#main_visual .swiper-wrapper > div.middle a {
+    background-color: #fff;
+    color: #ff92a8;
+}
+.main_visual i {
+    position: relative;
+    font-size: 1.5rem;
+    margin-left: 1.25rem;
+    top: 0.1875rem;
+}
+
+
+
+@media all and (max-width:479px) {
+    #main_visual .swiper-wrapper .swiper-slide {
+        height: 25rem;
+    }
+    #main_visual .swiper-wrapper > div > div {
+        padding: 9rem 1rem 0 !important;
+    }
+    .main_visual h2 {
+        font-size: 2.5rem;
+    }
+    .main_visual p {
+        font-size: 1rem;
+    }
+    #main_visual .swiper-button-next {
+        right: 0.9375rem;
+    }
+    #main_visual .swiper-button-prev {
+        left: 0.9375rem;
+    }
+    #main_visual .swiper-button-next, #main_visual .swiper-button-prev {
+        font-size: 2.5rem;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+    #main_visual .swiper-wrapper .swiper-slide {
+        height: 31.25rem;
+    }
+    #main_visual .swiper-wrapper > div > div {
+        padding: 11rem 1rem 0 !important;
+    }
+    .main_visual h2 {
+        font-size: 2.875rem;
+    }
+    #main_visual .swiper-button-next {
+        right: 0.9375rem;
+    }
+    #main_visual .swiper-button-prev {
+        left: 0.9375rem;
+    }
+    #main_visual .swiper-button-next, #main_visual .swiper-button-prev {
+        font-size: 2.5rem;
+    }
+}
+@media all and (min-width:768px) and (max-width:991px) {
+    #main_visual .swiper-wrapper .swiper-slide {
+        height: 34.38rem;
+    }
+    #main_visual .swiper-wrapper > div > div {
+        padding: 13rem 1rem 0 !important;
+    }
+}
+@media all and (min-width:992px) and (max-width:1299px) {
+
+}
+@media all and (max-width:1299px) {
+    #main_visual .swiper-wrapper > div > div {
+        width: 100%;
+        padding: 16rem 1rem 0;
+        margin: 0 auto;
+    }
+}
+
+
+
+
+
+
+
+
+/*메인 검색*/
+#main_content {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+#main_content .search_wrap,
+#main_content .main_animalInfo h2,
+#main_content .main_animalInfo > ul,
+#main_content .main_banner > ul,
+#main_content .main_animalNews > ul,
+#main_content .main_banner2 > ul {
+    width: 1300px;
+    margin: 0 auto;
+}
+#main_content .search_wrap {
+    margin:4.063rem auto;
+    background-color: #ff92a8;
+    border-radius: 0.9375rem;
+    padding: 1.875rem 10%; 
+    z-index: 1;
+    -moz-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0.25rem 0.25rem 0.9375rem 0px rgba(0, 0, 0, 0.2);
+}
+#main_content .search_wrap .search-box {
+    overflow: hidden;
+    width: 100%;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    height: 3.125rem;
+    line-height: 3.125rem;
+}
+#main_content .search_wrap .search-box input[type="text"] {
+    float: left;
+    width: 92%;
+    font-size: 1rem;
+    height: 2.875rem;
+    line-height:2.875rem;
+    background-color: transparent;
+    border: none;
+    color: #000;
+    padding-left: 1.25rem;
+}
+.search-box input::-webkit-input-placeholder {
+    color: #fff;
+}
+.search-box input:-ms-input-placeholder {
+    color: #fff;
+}
+.search-box input::-webkit-input-placeholder {
+    color: #fff;
+}
+.search-box input:-ms-input-placeholder {
+    color: #fff;
+}
+.search-box button {
+    float: right;
+    width: 8%;
+    height: 2.875rem;
+    line-height:2.875rem;
+    font-size: 2rem;
+    color: #ff92a8;
+    background-color: #fff;
+    border: none;
+    text-align: center;
+}
+
+
+/*메인 동물매칭*/
+.main_animalInfo {
+    padding: 3.75rem 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+.main_animalInfo h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2.813rem;
+    color: #333;
+    padding-bottom: 1.875rem;
+}
+.main_animalInfo h2 span {
+    color: #ff869c;
+}
+.main_animalInfo > ul {
+    font-size: 0;
+}
+.main_animalInfo > ul li {
+    position: relative;
+    display: inline-block;
+    text-align: left;
+    width: 23%;
+    padding: 0.625rem 1%;
+    margin: 0 1%;
+    cursor: pointer;
+    border-radius: 0.9375rem;
+    vertical-align: top;
+}
+.main_animalInfo > ul li:hover {
+    border: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.main_animalInfo > ul li > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.main_animalInfo > ul li > div a.chooseIcon {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    padding: 0 0.5rem;
+    display: inline-block;
+    border-radius: 0.1875rem;
+    background-color: #fb3860;
+    color: #fff;
+    border: 1px solid #fb3860;
+    font-weight: 500;
+}
+.main_animalInfo > ul li > div a.urlIcon {
+    position: absolute;
+    bottom: 0.3125rem;
+    right: 0.3125rem;
+    font-size: 1rem;
+    background-color:#fff;
+    border-radius: 100%;
+    color: #999;
+    border: 1px solid #999;
+    width: 1.875rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+}
+.main_animalInfo > ul li > div:hover a.urlIcon {
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.main_animalInfo > ul li > div img {
+    width: 100%;
+    border-radius: 10px;
+}
+.main_animalInfo > ul li > h3 {
+    font-size: 1.25rem;
+    color: #333;
+    padding-bottom: 0.625rem;
+    text-align: center;
+}
+.main_animalInfo > ul li > p {
+    font-size: 0.9375rem;
+    line-height: 1.375rem;
+    color: #777;
+    padding-bottom: 0.9375rem;
+}
+.main_animalInfo > ul li > p span {
+    color: #999;
+    padding-top: 0.3125rem;
+    display: block;
+}
+
+
+/*메인배너1*/
+.main_banner {
+    position: relative;
+    width: 100%;
+    background-image: url(/runningdog/resources/images/main/main_bannerBg.jpg);
+    height: 20rem;
+    background-size: cover;
+    background-position: center;
+}
+.main_banner > ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+}
+.main_banner > ul li {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 40%;
+    margin: 0 5%;
+    text-align: center;
+    padding: 1.875rem 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.main_banner > ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.main_banner > ul li h2 {
+    color: #fff;
+    font-size:1.563rem;
+    margin-bottom:1.25rem;
+}
+.main_banner > ul li h2 i {
+    position: relative;
+    top: 0.125rem;
+}
+.main_banner > ul li p {
+    color: #fff;
+    font-size:1.125rem;
+}
+.main_banner > ul li a {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    color: #fff;
+    font-size:2.308rem    ;
+}
+
+
+/*메인 영상/이슈*/
+.main_animalNews {
+    padding: 3.75rem 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+.main_animalNews h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 2.813rem;
+    color: #333;
+    padding-bottom: 1.875rem;
+}
+.main_animalNews h2 span {
+    color: #ff869c;
+}
+.main_animalNews > ul {
+    font-size: 0;
+}
+#main_content .main_animalNews > ul {
+	text-align: center;
+}
+.main_animalNews > ul li.grid-sizer {
+    display: none;
+}
+.main_animalNews > ul li.grid-sizer {
+    width: 23%;
+    padding: 0.625rem 1%;
+    margin: 0 1%;
+}
+.main_animalNews > ul li.grid-item {
+    position: relative;
+    /*float: left;*/
+    display: inline-block;
+    text-align: left;
+    width: 23%;
+    padding: 0.625rem 1%;
+    margin: 0 1% 0.625rem;
+    cursor: pointer;
+    border-radius: 0.9375rem;
+    vertical-align: top;
+}
+.main_animalNews > ul li.grid-item:before {
+    content: '';
+    position: absolute;
+    bottom: -0.3125rem;
+    right: 0;
+    left: 0;
+    border: 1px solid #eee;
+}
+.main_animalNews > ul li.grid-item:hover {
+    border: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.main_animalNews > ul li.grid-item > div {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+.main_animalNews > ul li.grid-item > div > a {
+    position: absolute;
+    bottom: 0.3125rem;
+    right: 0.3125rem;
+    font-size: 1.385rem;
+    background-color:#fff;
+    border-radius: 100%;
+    color: #999;
+    border: 1px solid #999;
+    width: 1.875rem;
+    height: 1.875rem;
+    text-align: center;
+    line-height: 1.875rem;
+}
+.main_animalNews > ul li.grid-item > div:hover > a {
+    color: #fff;
+    border: 1px solid #ff92a8;
+    background-color: #ff92a8;
+}
+.main_animalNews > ul li.grid-item > div > img {
+    width: 100%;
+    border-radius: 0.625rem;
+}
+.main_animalNews > ul li.grid-item > dl {
+    width: 100%;
+}
+.main_animalNews > ul li.grid-item > dl dt {
+    width: 20%;
+    margin:0 5%;
+    float: left;
+}
+.main_animalNews > ul li.grid-item > dl dt img {
+    width: 100%;
+    border-radius: 100%;
+}
+.main_animalNews > ul li.grid-item > dl dd {
+    width: 70%;
+    float: right;
+    text-align: left;
+}
+.main_animalNews > ul li.grid-item > dl dd h3 {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.3125rem;
+    word-wrap: break-word;
+    
+    
+    /* 여러 줄 자르기 추가 스타일 */
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.375rem;
+    max-height: 2.75rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.main_animalNews > ul li.grid-item > dl dd p {
+    font-size: 0.875rem;
+    color: #777;
+}
+
+
+
+/*메인배너2*/
+.main_banner2 {
+    position: relative;
+    width: 100%;
+    background-image: url(/runningdog/resources/images/main/main_bannerBg2.jpg);
+    height: 20rem;
+    background-size: cover;
+    background-position: center;
+}
+.main_banner2 > ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0;
+}
+.main_banner2 > ul li {
+    position: relative;
+    display: inline-block;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    width: 30%;
+    margin: 0 1.5%;
+    text-align: center;
+    padding: 1.875rem 0;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.main_banner2 > ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.main_banner2 > ul li h2 {
+    color: #fff;
+    font-size:1.563rem;
+    margin-bottom:1.25rem;
+}
+.main_banner2 > ul li h2 i {
+    position: relative;
+    top: 0.125rem;
+}
+.main_banner2 > ul li p {
+    color: #fff;
+    font-size:1.125rem;
+}
+.main_banner2 > ul li a {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    color: #fff;
+    font-size:2.308rem;
+}
+
+
+
+
+
+
+
+@media all and (max-width:479px) {
+    #main_content .search_wrap {
+        padding: 1.25rem 5%;
+        margin: 1.875rem auto !important;
+    }
+    #main_content .search_wrap .search-box input[type="text"] {
+        width: 84%;
+    }
+    .search-box button {
+        width: 16% !important;
+    }
+    .main_animalInfo > ul li {
+        width: 48%;
+    }
+    .main_banner {
+        height: 16rem;
+    }
+    .main_banner > ul li {
+        width: 48%;
+        margin: 0 1%;
+    }
+    .main_animalNews > ul li.grid-item {
+        width: 48%;
+        margin: 0 1% 0.625rem;
+    }
+    .main_banner > ul li a {
+        font-size: 1.375rem;
+    }
+    .main_banner2 {
+        height: 35rem;
+    }
+    .main_banner2 > ul li {
+        width: 98%;
+        margin: 0 1% 0.75rem;
+        padding: 1rem 0;
+    }
+    .main_banner2 > ul li:last-chile {
+        margin: 0 1% 0;
+    }
+    .main_banner2 > ul li h2 {
+        margin-bottom: 0.625rem;
+    }
+    .main_banner2 > ul li a {
+        font-size: 1.375rem;
+    }
+}
+@media all and (min-width:480px) and (max-width:767px) {
+    #main_content .search_wrap {
+        padding: 1.25rem 5%;
+        margin: 1.875rem auto !important;
+    }
+    #main_content .search_wrap .search-box input[type="text"] {
+        width: 85%;
+    }
+    .search-box button {
+        width: 15%;
+    }
+    .main_animalInfo > ul li {
+        width: 48%;
+    }
+    .main_banner > ul li {
+        width: 48%;
+        margin: 0 1%;
+    }
+    .main_animalNews > ul li.grid-item {
+        width: 48%;
+        margin: 0 1% 0.625rem;
+    }
+    .main_banner2 {
+        height: 38rem;
+    }
+    .main_banner2 > ul li {
+        width: 98%;
+        margin: 0 1% 0.75rem;
+        padding: 1rem 0;
+    }
+    .main_banner2 > ul li:last-chile {
+        margin: 0 1% 0;
+    }
+}
+@media all and (min-width:768px) and (max-width:991px) {
+    #main_content .search_wrap {
+        padding: 1.875rem 10%;
+    }
+    
+}
+@media all and (min-width:992px) and (max-width:1299px) {
+}
+@media all and (max-width:1299px) {
+    #main_content .search_wrap {
+        width: 96% !important;
+    }
+    #main_content .main_animalInfo h2,
+    #main_content .main_animalInfo > ul,
+    #main_content .main_banner > ul,
+    #main_content .main_animalNews > ul,
+    #main_content .main_banner2 > ul {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #main_content .search_wrap {
+        margin: 4.063rem auto;
+    }
+}
+
+

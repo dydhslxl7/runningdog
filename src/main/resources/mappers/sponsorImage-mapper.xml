@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sponsorImageMapper">
+
+	<resultMap id="resultSponsorImage" type="SponsorImage">
+		<id property="siNum" column="si_num" />
+		<result property="siName" column="si_name" />
+		<result property="sNum" column="s_num" />
+	</resultMap>
+	
+	<select id="selectImageList" resultType="SponsorImage">
+		select si_name from sponsorImage
+	</select>
+	
+	<select id="selectImageListNum" resultType="SponsorImage">
+		select si_name
+		from sponsorImage
+		where s_num in
+		<foreach collection="array" item="arr" open="(" close=")" separator=",">
+			#{ arr }
+		</foreach>
+	</select>
+	
+	<!-- <select id="selectOne" parameterType="int" resultType="Sponsor">
+		select * from sponsor where s_num = #{ snum }
+	</select> -->
+	
+	
+	<insert id="insertSCImage" parameterType="hashmap">
+		insert into sponsorImage (si_num, si_name, s_num)
+		select sponsor_thumbnail_num.nextval, A.* from (
+		<foreach collection="clist" item="arr" separator="union all ">
+			select #{ arr } as si_name, #{ sNum } as s_num from dual
+		</foreach>) A
+	</insert>
+	
+	<!-- <update id="updateSponsor" parameterType="Sponsor">
+		
+	</update> -->
+	
+	<delete id="deleteSponsorImage" parameterType="hashmap">
+		delete from sponsorImage
+		where s_num = #{ snum } and si_name in
+		<foreach collection="mlist" item="arr" open="(" close=")" separator=",">
+			#{ arr }
+		</foreach>
+	</delete>
+	
+	
+</mapper>

@@ -1,0 +1,674 @@
+@charset "utf-8";
+
+
+/*header*/
+.clearfix{*zoom:1}
+.clearfix:after{content:'';clear: both;display: block;}
+
+#header {
+    position: fixed;
+    z-index:100;
+    width:100%;
+    border-bottom:1px solid #ff92a8;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+#header .util_wrap {
+    position:relative;
+    width: 100%;
+    height: 3.125rem;
+    overflow: hidden;
+    background-color:#fff;
+}
+#header .util_wrap > div {
+    position:relative;
+    width: 1300px;
+    height: inherit;
+    margin: 0 auto;
+    z-index:99;
+}
+#header .util_wrap > div div {
+    float:left;
+    width:70%;
+}
+#header .util_wrap > div div ul.sosBell {
+    float:left;
+    height: inherit;
+}
+#header .util_wrap > div div ul.sosBell li {
+    /* float:left; */
+    line-height:3.125rem;
+    height: inherit;
+    cursor: pointer;
+    font-size: 1rem;
+    color:#333;
+    font-weight: 500;
+}
+#header .util_wrap > div div ul.sosBell li i {
+    position: relative;
+    top:-0.125rem;
+    font-size: 1.5rem;
+    color:#ff92a8;
+    line-height:3.125rem;
+    vertical-align: middle;
+}
+#header .util_wrap > div div ul.sosBell span {
+    margin: 0 0.625rem 0 0.3125rem;
+    color:#ff92a8;
+}
+#header .util_wrap > div ul.util {
+    float:right;
+}
+#header .util_wrap > div ul.util li {
+    float: left;
+    margin-left: 0.3125rem;
+}
+#header .util_wrap > div ul.util li a {
+    display: block;
+    font-size: 0.875rem;
+    line-height: 3.125rem;
+    color: #333;
+    font-weight: 500;
+    padding: 0 0.625rem;
+}
+
+#header .gnbWrap {
+    top: 3.125rem;
+    width: 1300px;
+    height: 5.625rem;
+    margin: 0 auto;
+    z-index:99;
+}
+#header .gnbWrap h1 {
+    margin-top: 0.9375rem;
+    cursor: pointer;
+    float: left;
+    width: 6.625rem;
+    height: 3.75rem;
+    background-image:url(/runningdog/resources/images/common/logo.png);
+    background-repeat: no-repeat;
+
+}
+#header .gnbWrap .gnb {
+    float: right;
+    transition:all .2s ease-in-out;
+    -webkit-transition:all .2s ease-in-out;
+    text-align: center;
+    font-size:0;
+}
+#header .gnbWrap .gnb:after {
+    content:'';
+    clear:both;
+    display:block;
+}
+#header .gnbWrap .gnb > li {
+    position: relative;
+    display: inline-block;
+    padding:0 1.25rem;
+    margin-left: 0.625rem;
+}
+#header .gnbWrap .gnb > li:first-child {
+    padding-left:0;
+}
+#header .gnbWrap .gnb > li:last-child {
+    padding-right:0;
+    position: relative;
+}
+#header .gnbWrap .gnb > li > a {
+    font-family: 'TmoneyRoundWindExtraBold';
+    position: relative;
+    display: block;
+    font-size: 1.125rem;
+    color: #fff;
+    line-height: 5.625rem;
+}
+#header .gnbWrap .gnb > li > a:after {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:0.1875rem;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:#fff;
+    -webkit-transform:scaleX(0);
+    transform:scaleX(0);
+    -webkit-transition:all .4s cubic-bezier(.55,.68,0,.97);
+    transition:all .4s cubic-bezier(.55,.68,0,.97);
+}
+#header .gnbWrap .gnb > li:hover > a:after {
+    -webkit-transform:scaleX(1);
+    transform:scaleX(1);
+}
+#header .gnbWrap .gnb > li:hover .dep2Wrap {
+    display: block;
+}
+#header .gnbWrap .gnb > li .dep2Wrap {
+    display: none;
+    position: absolute;
+    left: -10%;
+    width: 120%;
+}
+
+#header .gnbWrap .gnb > li .dep2 {
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    background-color: rgba(255,255,255,1);
+    border: 1px solid #ff92a8;
+    border-top: none;
+}
+#header .gnbWrap .gnb > li .dep2 > li {
+    display:block;
+}
+#header .gnbWrap .gnb > li .dep2 > li a {
+    display:block;
+    line-height:3rem;
+    color:#333;
+    font-size:0.875rem;
+}
+#header .gnbWrap .gnb > li .dep2 > li a:hover {
+    background-color: #ff92a8;
+    color:#fff;
+}
+#header.active {
+    background-color:#fff;
+}
+#header.active .util_wrap {
+    border-bottom:1px solid #eee;
+}
+#header.active .gnbWrap h1{
+    background-image:url(/runningdog/resources/images/common/logo_over.png);
+}
+#header.active .gnbWrap .gnb > li > a {
+    color:#ff92a8;
+}
+#header.active .gnbWrap .gnb > li > a:after {
+    background-color:#ff92a8;
+}
+#header.on {
+    height: 5rem;
+    background-color: #fff;
+}
+#header.on .gnbWrap {
+    height: 5rem;
+}
+#header.on .gnbWrap h1{
+    background-image:url(/runningdog/resources/images/common/logo_over.png);
+    margin-top: 0.625rem;
+}
+#header.on .gnbWrap .gnb > li > a{
+    color:#ff92a8;
+    line-height:5rem;
+}
+#header.on .gnbWrap .gnb > li > a:after{
+    background-color:#ff92a8;
+}
+#header.on .gnb > li .dep2Wrap{
+    top: 5rem;
+}
+#header.on .util_wrap {
+    display: none;
+}
+
+
+/* 헤더 전체메뉴 */
+.menuAll {
+    display:none;
+    position:relative;
+    background-color:#fff;
+    z-index:101;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #ccc;
+    width:100%;
+}
+.menuAll > ul {
+    position: relative;
+    overflow:hidden;
+    width:1300px;
+    margin:0 auto;
+    padding-bottom: 1.25rem;
+}
+.menuAll > ul > li {
+    float:left;
+    width:25% !important;
+    padding:0.625rem 1.25rem;
+    box-sizing:border-box;
+}
+.menuAll > ul > li div {
+    padding:1.25rem 0 0.625rem;
+    margin-bottom:0.625rem;
+    border-bottom:1px solid #e5e5e5;
+}
+.menuAll > ul > li div a {
+    display:block;
+    font-size:0.9375rem;
+    font-weight:500;
+    color:#222;
+}
+.menuAll > ul > li .depth2 li {
+    padding-bottom:0.625rem;
+}
+.menuAll > ul > li .depth2 li a {
+    display:block;
+    font-size:0.9375rem;
+    color:#777;
+}
+.menuAll > ul > li.menuAll_close {
+    position: absolute;
+    width: auto !important;
+    height: auto !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    padding: 0 !important;
+    margin:0 !important;
+    color: #ff92a8;
+    font-size: 3.75rem;
+    cursor: pointer;
+}
+.menuAll > ul > li.menuAll_close:hover {
+    color: #fb3860;
+}
+
+
+
+/*footer*/
+#topRollBtn {
+    position: fixed;
+    width: 2.5rem;
+    height: 2.5rem;
+    bottom: 5rem;
+    right: 2%;
+    background-color: #fff;
+    border:1px solid #ff869c;
+    border-radius: 0.3125rem;
+    z-index: 99;
+    color: #ff869c;
+    line-height: 0.75rem;
+    font-size: 0.8125rem;
+}
+#topRollBtn:hover, #topRollBtn:focus {
+    color: #fff;
+    background-color: #fb3860;
+    border:1px solid #fb3860;
+}
+#footer {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 1.25rem 0 2.5rem;
+    background-color: #343841;
+    font-family:'Jua';
+}
+#footer dl {
+    overflow: hidden;
+    width: 1300px;
+    margin: 0 auto;
+}
+#footer dl dt {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 0.9375rem;
+}
+#footer dl dt h2 {
+    float: left;
+    width: 6.875rem;
+    margin-right: 1.25rem;
+}
+#footer dl dt a {
+    font-size: 0.9375rem;
+    color: #fff;
+    font-weight: 500;
+    display: block;
+    margin-right:1.25rem;
+    float: left;
+}
+#footer dl dd {
+    font-size: 0.9375rem;
+    color: #999;
+    line-height: 1.5rem;
+}
+#footer dl dd span {
+    font-size: 0.9231rem;
+}
+
+
+
+
+
+/*좌측메뉴*/
+.leftMenu_wrap {
+    border-radius: 0.625rem;
+    margin: 3rem 0 5rem;
+    float: left;
+    width: 16.25rem;
+    border: 1px solid #ff92a8;
+}
+.leftMenu_wrap .leftProfile {
+    text-align: center;
+    overflow: hidden;
+}
+.leftMenu_wrap .leftProfile > div {
+	margin: 2.5rem auto 1.563rem;
+    height: 180px;
+    width: 180px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+.leftMenu_wrap .leftProfile > div img {
+    width: 100%;
+}
+.leftMenu_wrap .leftProfile h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.3125rem;
+    word-break: break-all;
+    padding: 0 20px;
+}
+.leftMenu_wrap .leftProfile p {
+    font-size: 0.9375rem;
+}
+.leftMenu_wrap .leftProfile > ul {
+    width: 100%;
+    padding:0.9375rem 1.563rem;
+    overflow: hidden;
+}
+.leftMenu_wrap .leftProfile > ul li {
+    float: left;
+    width: 50%;
+    line-height: 1.5rem;
+    font-size: 0.875rem;
+}
+.leftMenu_wrap .leftProfile > ul li b {
+    font-weight: 700;
+}
+.leftMenu_wrap .leftProfile > ul li button {
+    border: none;
+    background-color: #777;
+    color: #fff;
+    border-radius: 0.3125rem;
+    font-size: 0.8125rem;
+    padding: 0 0.625rem;
+    line-height: 1.75rem;
+}
+.leftMenu_wrap .leftProfile > ul li button:hover {
+    background-color: #333;
+}
+.leftMenu_wrap .leftGnb {
+    overflow: hidden;
+    margin: 1rem 0.625rem 1.875rem;
+    border-top: 1px dotted #ff92a8;
+    border-bottom: 1px dotted #ff92a8;
+}
+.leftMenu_wrap .leftGnb li {
+    line-height: 2.5rem;
+}
+.leftMenu_wrap .leftGnb li:hover {
+    background-color: #fb3860;
+}
+.leftMenu_wrap .leftGnb li a {
+    line-height: 2.5rem;
+    font-size: 1rem;
+    padding: 0 2rem;
+    color: #ff92a8;
+    font-weight: 500;
+    display: block;
+}
+.leftMenu_wrap .leftGnb li:hover a {
+    color: #fff;
+}
+.leftMenu_wrap .leftBanner {
+    overflow: hidden;
+    margin-top: 2.5rem;
+    padding: 0.625rem;
+}
+.leftMenu_wrap .leftBanner li {
+    position: relative;
+    text-align: center;
+    padding: 1.625rem 0.625rem;
+    cursor: pointer;
+}
+.leftMenu_wrap .leftBanner li:last-child:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid #ff92a8;
+    -moz-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    -webkit-box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+    box-shadow: 2px 2px 10px 0px rgba(237, 159, 175, 1);
+}
+.leftMenu_wrap .leftBanner li:last-child {
+    margin-bottom: 0;
+}
+.leftMenu_wrap .leftBanner li h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.625rem;
+}
+.leftMenu_wrap .leftBanner li p {
+    word-break: break-all;
+}
+.leftMenu_wrap .leftBanner li:hover h2, .leftMenu_wrap .leftBanner li:hover p {
+    color: #fb3860;
+}
+
+
+
+/*********************************************************************/
+
+
+
+
+/* 상단영역 - 모바일 */
+#mHeader {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    display: none;
+    z-index: 99;
+}
+#mHeader dl {
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #ff92a8;
+    padding: 0.625rem 1rem;
+}
+#mHeader dl dt {
+    float: left;
+    width: 25%;
+    font-size: 0;
+}
+#mHeader dl dt:first-child {
+    text-align: left;
+}
+#mHeader dl dt:last-child {
+    text-align: right;
+}
+#mHeader dl dt button {
+    font-size: 2rem;
+    color: #fff;
+    padding:0 0.625rem;
+    display: inline-block;
+    line-height: 3.125rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+#mHeader dl dd {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+#mHeader dl dd h1 {
+    width: 5.5rem;
+    height: 3.125rem;
+    margin: 0 auto;
+    background-image: url(/runningdog/resources/images/common/logo.png);
+    background-repeat: no-repeat;
+    background-size: 5.5rem 3.125rem;
+    cursor: pointer;
+}
+#mHeader.on, #mHeader.active {
+    background-color: #fff;
+}
+#mHeader.on dl dd h1, #mHeader.active dl dd h1 {
+    background-image:url(/runningdog/resources/images/common/logo_over.png);
+}
+#mHeader.on dl dt, #mHeader.active dl dt {
+    color:#ff92a8;
+}
+#mHeader.on dl dt button, #mHeader.active dl dt button {
+    color:#ff92a8;
+}
+#mHeader .mHeader_menu {
+    background-color: #fff;
+    border-top: 1px solid #fb3860;
+    overflow: hidden;
+}
+#mHeader .mHeader_menu li {
+    border-bottom: 1px dotted #fb3860;
+}
+#mHeader .mHeader_menu li:first-child {
+    padding-top: 1.25rem;
+}
+#mHeader .mHeader_menu li:last-child {
+    border-bottom: 1px solid #fb3860;
+}
+#mHeader .mHeader_menu li a {
+    font-size: 1rem;
+    line-height: 2.813rem;
+    display: block;
+    padding: 0 10%;
+    color: #fb3860;
+}
+#mHeader .mHeader_menu li:hover{
+    background-color: #fb3860;
+}
+#mHeader .mHeader_menu li:hover a {
+    color: #fff;
+}
+
+
+/*모바일하단 메뉴*/
+#fmobileMenu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ff92a8;
+    font-size: 0;
+    z-index: 100;
+    display: none;
+}
+#fmobileMenu > a {
+    display: inline-block;
+    width: 20%;
+    padding: 0.625rem 0;
+    text-align: center;
+    color: #ff92a8;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    vertical-align: bottom;
+}
+#fmobileMenu > a i {
+    font-size: 1.875rem;
+}
+#fmobileMenu > a:hover {
+    color: #fb3860;
+}
+#fmobileMenu > a.on {
+    color: #fb3860;
+}
+
+#fmobileMenu > a span {
+    color: #fb3860;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+#fmobileMenu .fmypage_menu {
+    position: absolute;
+    width: 10rem;
+    bottom: 120%;
+    right: 2%;
+    background-color: #fff;
+    border: 1px solid #fb3860;
+    padding: 0.3125rem;
+}
+#fmobileMenu .fmypage_menu:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: 15%;
+    width: 0;
+    height: 0;
+    border-top: 10px solid #fb3860;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    z-index: -1;
+}
+#fmobileMenu .fmypage_menu li {
+    border-top: 1px dotted #fb3860;
+}
+#fmobileMenu .fmypage_menu li:hover {
+    background-color: #fb3860;
+}
+#fmobileMenu .fmypage_menu li:hover a {
+    color: #fff;
+}
+#fmobileMenu .fmypage_menu li:first-child {
+    border-top: none;
+}
+#fmobileMenu .fmypage_menu li a {
+    font-size: 1rem;
+    line-height: 2.813rem;
+    display: block;
+    padding: 0 10%;
+    color: #fb3860;
+}
+
+
+@media all and (max-width:479px) {
+
+}
+@media all and (min-width:480px) and (max-width:767px) {
+}
+@media all and (min-width:768px) and (max-width:991px) {
+}
+@media all and (min-width:992px) and (max-width:1299px) {
+}
+@media all and (max-width:1299px) {
+    #header .util_wrap div {
+        width: 100%;
+    }
+    #header .gnbWrap {
+        width: 100%;
+    }
+    .menuAll > ul {
+        width: 100%;
+    }
+    #footer dl {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    .leftMenu_wrap {
+        width: 22%;
+    }
+}
+@media all and (max-width:999px) {
+    #mHeader {
+        display: block;
+    }
+    #header {
+        display: none;
+    }
+    #fmobileMenu {
+        display: block;
+    }
+    .leftMenu_wrap {
+        display: none;
+    }
+    #footer {
+        padding: 1.25rem 0 6.25rem;
+    }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="messageMapper">
+	<resultMap type="Message" id="resultMessage">
+		<id property="messageNo" column="messageNo"/>
+		<result property="roomNo" column="roomNo"/>
+		<result property="sender" column="sender"/>
+		<result property="receiver" column="receiver"/>
+		<result property="sendTime" column="sendTime"/>
+		<result property="content" column="content"/>
+		<result property="readCheck" column="readCheck"/>
+	</resultMap>
+	
+	<resultMap type="Message" id="resultList">
+		<result property="messageNo" column="messageNo"/>
+		<result property="roomNo" column="roomNo"/>
+		<result property="sender" column="sender"/>
+		<result property="receiver" column="receiver"/>
+		<result property="sendTime" column="sendTime"/>
+		<result property="content" column="content"/>
+		<result property="readCheck" column="readCheck"/>
+	</resultMap>
+	
+	<select id="selectChatLog" parameterType="_int" resultType="Message">
+		select * from message where roomno = #{roomNo} order by messageno
+	</select>
+	
+	<select id="selectUnread" parameterType="Message" resultType="_int">
+		select count(*) from message where roomno = #{roomNo} and readcheck = 'N' and receiver != #{receiver}
+	</select>
+	
+	<select id="selectTotalUnreadCount" parameterType="_int" resultType="_int">
+		select count(*) from message where receiver = #{uniqueNum} and readcheck = 'N'
+	</select>
+	
+	<insert id="insertChatLog" parameterType="Message">
+		insert into message
+		values(MESSAGE_SEQ.nextval, #{roomNo}, #{sender}, #{receiver}, #{sendTime}, #{content}, #{readCheck})
+	</insert>
+	
+	<update id="updateReadcheck" parameterType="Message">
+		update message set readcheck = 'Y' where roomno = #{roomNo} and sender = #{sender} and readcheck = 'N'
+	</update>
+</mapper>

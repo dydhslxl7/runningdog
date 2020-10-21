@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chatroomMapper">
+	<resultMap type="Chatroom" id="resultChatroom">
+		<id property="roomNo" column="roomNo"/>
+		<result property="memberNo" column="memberNo"/>
+		<result property="nickname" column="nickname"/>
+		<result property="lastMessage" column="lastMessage"/>
+		<result property="lastDate" column="lastDate"/>
+	</resultMap>
+
+	<resultMap type="Chatroom" id="resultList">
+		<result property="roomNo" column="roomNo"/>
+		<result property="memberNo" column="memberNo"/>
+		<result property="nickname" column="nickname"/>
+		<result property="lastMessage" column="lastMessage"/>
+		<result property="lastDate" column="lastDate"/>
+	</resultMap>
+	
+	<select id="selectMyChatList" parameterType="Chatroom" resultType="_int">
+		select roomno from chatroom where memberno = #{memberNo}
+	</select>
+	
+	<select id="selectMyChatMember" parameterType="Chatroom" resultMap="resultList">
+		select * from chatroom where memberno != #{memberNo} order by lastdate asc
+	</select>
+
+	<select id="selectMyChatCount" parameterType="Chatroom" resultType="_int">
+		select count(*) from chatroom where memberno = #{memberNo}
+	</select>
+	
+	<select id="selectExistsRoomNo" parameterType="com.kh.runningdog.chatting.model.vo.StartChat" resultType="_int">
+	select roomno from chatroom where memberno = #{inviterNo}
+	intersect
+	select roomno from chatroom where memberno = #{inviteeNo}
+	</select>
+	
+	<insert id="insertStartChat" parameterType="com.kh.runningdog.chatting.model.vo.StartChat">
+		insert all
+		into chatroom
+		values(ROOM_SEQ.nextval, #{inviterNo}, #{lastMessage}, #{inviterName} ,sysdate)
+		into chatroom
+		values(ROOM_SEQ.nextval, #{inviteeNo}, #{lastMessage}, #{inviteeName}, sysdate)
+		select * from dual
+	</insert>
+	
+	<update id="updateLastResp" parameterType="Chatroom">
+		update chatroom set lastmessage = #{lastMessage}, lastdate = #{lastDate} where roomno = #{roomNo}
+	</update>
+
+	<delete id="deleteChat" parameterType="_int">
+		delete from chatroom where roomno = #{roomNo}
+	</delete>
+
+</mapper>

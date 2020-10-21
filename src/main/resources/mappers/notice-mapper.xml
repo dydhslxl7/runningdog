@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+
+<!-- 	<resultMap type="Notice" id="resultNotice">
+		<id column="NOTICE_NO" property="noticeNo" />
+		<result column="NOTICE_WRITER" property="noticeWriter" />
+		<result column="NOTICE_TITLE" property="noticeTitle" />
+		<result column="NOTICE_CONTENT" property="noticeContent" />
+		<result column="NOTICE_DATE" property="noticeDate" />
+		<result column="NOTICE_READCOUNT" property="noticeReadcount" />
+		<result column="NOTICE_STATE" property="noticeState" />
+		<result column="NOTICE_ORIGINAL_FILENAME1" property="noticeOriginalFilename1" />
+		<result column="NOTICE_RENAME_FILENAME1" property="noticeRenameFilename1" />
+		<result column="NOTICE_ORIGINAL_FILENAME2" property="noticeOriginalFilename2" />
+		<result column="NOTICE_RENAME_FILENAME2" property="noticeRenameFilename2" />
+		<result column="NOTICE_ORIGINAL_FILENAME3" property="noticeOriginalFilename3" />
+		<result column="NOTICE_RENAME_FILENAME3" property="noticeRenameFilename3" />
+	</resultMap> -->
+
+	
+	<select id="selectList" resultType="Notice" parameterType="com.kh.runningdog.notice.model.vo.NoticePage">
+			SELECT * 
+			FROM (SELECT ROWNUM RNUM, NOTICE_NO, NOTICE_WRITER, NOTICE_TITLE, NOTICE_CONTENT, NOTICE_DATE, NOTICE_READCOUNT, NOTICE_STATE, NOTICE_ORIGINAL_FILENAME1, NOTICE_RENAME_FILENAME1,  
+				  NOTICE_ORIGINAL_FILENAME2, NOTICE_RENAME_FILENAME2, NOTICE_ORIGINAL_FILENAME3, NOTICE_RENAME_FILENAME3
+			  FROM (select * from notice 
+			  <if test="search == 'title'">
+				WHERE UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'content'">
+	  			WHERE UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'both'">
+	  			WHERE (UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%' OR UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%')
+			</if>
+			  order by notice_state nulls last, notice_date desc)) 
+	     	<![CDATA[
+	  		  WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}
+	     	]]>	
+	</select>
+	
+	
+	<select id="getListCount" resultType="_int" parameterType="com.kh.runningdog.notice.model.vo.NoticePage">
+		select count(*) from notice
+			<if test="search == 'title'">
+				WHERE UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'content'">
+	  			WHERE UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'both'">
+	  			WHERE (UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%' OR UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%')
+			</if>
+	</select>
+	
+	
+	<select id="selectNotice" resultType="Notice" parameterType="_int">
+		select * from notice where notice_no = #{ noticeNo }
+	</select>
+	
+	<update id="updateReadCount" parameterType="_int">
+		update notice set notice_readcount = notice_readcount + 1 where notice_no = #{ noticeNo }
+	</update>
+
+
+	<select id="selectNoticePre" resultType="Integer" parameterType="com.kh.runningdog.notice.model.vo.NoticePage">
+		select leadnum from (select notice_no, lead(notice_no) over(order by notice_state nulls last, notice_date desc) leadnum from notice
+			<if test="search == 'title'">
+				WHERE UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'content'">
+	  			WHERE UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'both'">
+	  			WHERE (UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%' OR UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%')
+			</if>	
+		) where notice_no = #{ noticeNo }
+	</select>
+	
+	<select id="selectNoticeNext" resultType="Integer" parameterType="com.kh.runningdog.notice.model.vo.NoticePage">
+			select lagnum from (select notice_no, lag(notice_no) over(order by notice_state nulls last, notice_date desc) lagnum from notice
+			<if test="search == 'title'">
+				WHERE UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'content'">
+	  			WHERE UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%'
+			</if>
+	  		<if test="search == 'both'">
+	  			WHERE (UPPER(NOTICE_TITLE) LIKE '%' ||  UPPER(#{keyword}) || '%' OR UPPER(NOTICE_CONTENT) LIKE '%' ||  UPPER(#{keyword}) || '%')
+			</if>	
+		) where notice_no = #{ noticeNo }
+
+	</select>
+	
+	<insert id="insertNotice" parameterType="Notice">
+	    INSERT INTO NOTICE
+        VALUES(NOTICE_NO_SEQ.nextval, #{ noticeWriter }, #{ noticeTitle }, #{ noticeContent }, sysdate, default, #{ noticeState, jdbcType=VARCHAR }, 
+        #{ noticeOriginalFilename1, jdbcType=VARCHAR }, #{ noticeRenameFilename1, jdbcType=VARCHAR }, #{ noticeOriginalFilename2, jdbcType=VARCHAR }, 
+        #{ noticeRenameFilename2, jdbcType=VARCHAR }, #{ noticeOriginalFilename3, jdbcType=VARCHAR }, #{ noticeRenameFilename3, jdbcType=VARCHAR })
+	</insert>
+	
+	<update id="updateNotice" parameterType="Notice">
+		UPDATE NOTICE
+		SET NOTICE_WRITER = #{ noticeWriter },
+      		NOTICE_TITLE = #{ noticeTitle },
+      		NOTICE_CONTENT = #{ noticeContent },
+      		NOTICE_STATE = #{ noticeState, jdbcType=VARCHAR },
+      		NOTICE_ORIGINAL_FILENAME1 = #{ noticeOriginalFilename1, jdbcType=VARCHAR },
+      		NOTICE_RENAME_FILENAME1 = #{ noticeRenameFilename1, jdbcType=VARCHAR },
+      		NOTICE_ORIGINAL_FILENAME2 = #{ noticeOriginalFilename2, jdbcType=VARCHAR },
+      		NOTICE_RENAME_FILENAME2 = #{ noticeRenameFilename2, jdbcType=VARCHAR },
+      		NOTICE_ORIGINAL_FILENAME3 = #{ noticeOriginalFilename3, jdbcType=VARCHAR },
+      		NOTICE_RENAME_FILENAME3 = #{ noticeRenameFilename3, jdbcType=VARCHAR }
+		WHERE NOTICE_NO = #{ noticeNo }
+	</update>
+	
+	<delete id="deleteNotice" parameterType="_int">
+		DELETE FROM NOTICE WHERE NOTICE_NO = #{ noticeNo }
+	</delete>
+	
+	<select id="selectStateList" resultType="Notice">
+		<![CDATA[
+			select * 
+			from notice 
+			where notice_state is not null
+			or notice_date > (select to_char(add_months(sysdate -1, -1), 'yyyy/mm/dd') from dual)
+			order by notice_state nulls last, notice_date desc
+		]]>
+	</select>
+
+</mapper>

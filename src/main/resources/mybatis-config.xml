@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC
+"-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+ 	
+	<settings>
+		<!-- null일때 null값 넣기 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<!-- _언더바가 카멜표기법으로 맵핑처리해주는 것 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.runningdog.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.runningdog.chatting.model.vo.Chatroom" alias="Chatroom" />
+		<typeAlias type="com.kh.runningdog.chatting.model.vo.Message" alias="Message" />
+		<typeAlias type="com.kh.runningdog.member.model.vo.LeaveMember" alias="LeaveMember" />
+		<typeAlias type="com.kh.runningdog.sponsor.model.vo.Sponsor" alias="Sponsor"/>
+		<typeAlias type="com.kh.runningdog.sponsor.model.vo.SponsorList" alias="SponsorList"/>
+		<typeAlias type="com.kh.runningdog.sponsor.model.vo.SponsorImage" alias="SponsorImage"/>
+		<typeAlias type="com.kh.runningdog.volunteer.model.vo.Volunteer" alias="Volunteer" />
+		<typeAlias type="com.kh.runningdog.protect.model.vo.Protect" alias="Protect" />
+		<typeAlias type="com.kh.runningdog.volunteer.model.vo.Vreply" alias="Vreply" />
+		<typeAlias type="com.kh.runningdog.notice.model.vo.Notice" alias="Notice" />
+		<typeAlias type="com.kh.runningdog.contents.model.vo.Issue" alias="Issue" />
+		<typeAlias type="com.kh.runningdog.dboard.model.vo.Dboard" alias="Dboard" />
+		<typeAlias type="com.kh.runningdog.dreply.model.vo.Dreply" alias="Dreply" />
+		<typeAlias type="com.kh.runningdog.animal.model.vo.Animal" alias="Animal" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="mappers/notice-mapper.xml" />
+		<mapper resource="mappers/issue-mapper.xml" />
+		<mapper resource="mappers/member-mapper.xml" />
+		<mapper resource="mappers/chatroom-mapper.xml" />
+		<mapper resource="mappers/message-mapper.xml" />
+		<mapper resource="mappers/leaveMember-mapper.xml" />
+		<mapper resource="mappers/sponsor-mapper.xml" />
+		<mapper resource="mappers/sponsorImage-mapper.xml" />
+		<mapper resource="mappers/volunteer-mapper.xml" />
+		<mapper resource="mappers/protect-mapper.xml" />
+		<mapper resource="mappers/dboard-mapper.xml" />
+		<mapper resource="mappers/dreply-mapper.xml" />
+		<mapper resource="mappers/animal-mapper.xml" />
+	</mappers> 
+		
+</configuration> 

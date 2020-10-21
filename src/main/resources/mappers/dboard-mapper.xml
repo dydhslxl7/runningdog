@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dboardMapper">
+
+	<resultMap type="Dboard" id="resultDboard">
+		<id column="d_num" property="dNum" />
+		<result column="user_id" property="userId" />
+		<result column="unique_num" property="uniqueNum" />
+		<result column="d_writer" property="dWriter" />
+		<result column="d_title" property="dTitle" />
+		<result column="d_content" property="dContent" />
+		<result column="d_find_date" property="dFindDate" />
+		<result column="d_find_local" property="dFindLocal" />
+		<result column="d_gender" property="dGender" />
+		<result column="d_category" property="dCategory" />
+		<result column="d_local" property="dLocal" />
+		<result column="d_phone" property="dPhone" />
+		<result column="d_point" property="dPoint" />
+		<result column="d_date" property="dDate" />
+		<result column="d_mdate" property="dMdate" />
+		<result column="d_count" property="dCount" />
+		<result column="map_x" property="mapX" />
+		<result column="map_y" property="mapY" />
+		<result column="d_check" property="dCheck" />
+		<result column="d_success" property="dSuccess" />
+		<result column="view_image" property="viewImage" />
+		<result column="list_image" property="listImage" />
+		
+			
+	</resultMap>
+	
+	<resultMap type="Dboard" id="resultNew4">
+		<result column="d_num" property="dNum" />
+		<result column="d_title" property="dTitle" />
+		<result column="d_writer" property="dWriter" />
+		<result column="d_find_date" property="dFindDate" />
+		<result column="d_find_local" property="dFindLocal" />
+		<result column="d_date" property="dDate" />
+		<result column="d_writer" property="dWriter" />
+		<result column="list_image" property="listImage" />
+	</resultMap>
+	
+	
+	<select id="selectNew4" resultMap="resultNew4">
+		<![CDATA[ 
+		SELECT * 
+		FROM (SELECT ROWNUM RNUM, D_NUM, D_WRITER, D_TITLE, D_FIND_DATE, D_FIND_LOCAL, D_DATE, LIST_IMAGE
+			  FROM(SELECT * 
+					FROM DBOARD WHERE D_CHECK ='y'
+					ORDER BY D_NUM DESC)) 
+		WHERE RNUM >=1 AND RNUM <=4
+		]]>
+	</select>
+	
+	<select id="selectListCount" parameterType="Dboard" resultType="int">
+		SELECT COUNT(*)
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE  '%' || #{searchValue} || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE  '%' || #{category} || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{local}
+		</if>
+			AND D_CHECK = 'y'
+	</select>
+	
+	<select id="selectAdminCount" parameterType="Dboard" resultType="int">
+		SELECT COUNT(*)
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE  '%' || #{searchValue} || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE  '%' || #{category} || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{local}
+		</if>
+	</select>
+	
+	
+	<select id="selectList" parameterType="Dboard" resultType="Dboard">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, D_NUM, USER_ID, UNIQUE_NUM, D_WRITER, D_TITLE, D_CONTENT, D_FIND_DATE,
+			  D_FIND_LOCAL, D_GENDER, D_CATEGORY, D_LOCAL, D_PHONE, D_POINT, D_DATE, D_MDATE, D_COUNT,
+			  MAP_X, MAP_Y, D_CHECK, D_SUCCESS, VIEW_IMAGE, LIST_IMAGE
+			  FROM (SELECT *
+			  		FROM DBOARD WHERE D_CHECK = 'y' 
+			  		<if test="searchFiled != null and searchFiled !=''">
+					AND ${searchFiled} LIKE  '%' || #{searchValue} || '%'
+					</if>
+					<if test="category != null and category !=''">
+					AND D_CATEGORY LIKE  '%' || #{category} || '%'
+					</if>
+					<if test="local != null and local !=''">
+					AND D_LOCAL = #{local}
+					</if>
+					ORDER BY D_NUM DESC))
+		WHERE RNUM BETWEEN #{startRowNo} AND #{endRowNo}
+	</select>
+	
+	<select id="selectAdminList" parameterType="Dboard" resultType="Dboard">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM, D_NUM, USER_ID, UNIQUE_NUM, D_WRITER, D_TITLE, D_CONTENT, D_FIND_DATE,
+			  D_FIND_LOCAL, D_GENDER, D_CATEGORY, D_LOCAL, D_PHONE, D_POINT, D_DATE, D_MDATE, D_COUNT,
+			  MAP_X, MAP_Y, D_CHECK, D_SUCCESS, VIEW_IMAGE, LIST_IMAGE
+			  FROM (SELECT *
+			  		FROM DBOARD WHERE 1=1
+			  		<if test="searchFiled != null and searchFiled !=''">
+					AND ${searchFiled} LIKE  '%' || #{searchValue} || '%'
+					</if>
+					<if test="category != null and category !=''">
+					AND D_CATEGORY LIKE  '%' || #{category} || '%'
+					</if>
+					<if test="local != null and local !=''">
+					AND D_LOCAL = #{local}
+					</if>
+					ORDER BY D_NUM DESC))
+		WHERE RNUM BETWEEN #{startRowNo} AND #{endRowNo}
+	</select>
+	
+	
+	<!-- 숨김처리한지 3개월 지난 게시물 조회 -->
+	<select id="selectDboardNumList" resultType="Dboard">
+	<![CDATA[
+		SELECT *
+		FROM DBOARD
+		WHERE D_MDATE < (SELECT TO_CHAR(ADD_MONTHS(SYSDATE,-3), 'RRRR-MM-DD HH24:MI:SS') FROM DUAL)
+		AND D_CHECK ='n'
+	]]>
+	</select>
+	
+	<select id="selectOne" parameterType="_int" resultMap="resultDboard">
+		SELECT * FROM DBOARD WHERE D_NUM = #{ dNum }
+	</select>
+	<!-- 검색한 글 번호중 현재 조회한 글 보다 큰 번호중에 제일 작은 수를 찾음. 하지만 번호가 없이 NULL값이 나오면
+	현재 번호를 리턴시킴 --> 
+	<select id="selectNext" parameterType="Dboard" resultType="int">
+		SELECT NVL(MIN(D_NUM),#{dNum})
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE '%' || #{searchValue} || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE '%' || #{ category } || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{ local }
+		</if>
+		<![CDATA[
+			AND D_CHECK = 'y' AND D_NUM > #{ dNum }
+		]]>
+	</select>
+	<!-- 검색한 글 번호중 현재 조회한 글 보다 큰 번호중에 제일 큰 수를 찾음. 하지만 번호가 없이 NULL값이 나오면
+	현재 번호를 리턴시킴 --> 
+		<select id="selectAdminNext" parameterType="Dboard" resultType="int">
+		SELECT NVL(MIN(D_NUM),#{dNum})
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${ searchFiled } LIKE '%' || #{ searchValue } || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE '%' || #{ category } || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{ local }
+		</if>
+		<![CDATA[
+		AND D_NUM > #{ dNum }
+		]]>
+	</select>
+	<!-- 검색한 글 번호중 현재 조회한 글 보다 작은 번호중에 제일 큰 수를 찾음. 하지만 번호가 없이 NULL값이 나오면
+	현재 번호를 리턴시킴 --> 
+	<select id="selectPrev" parameterType="Dboard" resultType="int">
+		SELECT NVL(MAX(D_NUM),#{dNum})
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE '%' || #{ searchValue } || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE '%' || #{ category } || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{ local }
+		</if>
+		<![CDATA[
+		AND D_CHECK = 'y' AND D_NUM < #{ dNum }
+		]]>
+		
+	</select>
+	
+	<!-- 검색한 글 번호중 현재 조회한 글 보다 작은 번호중에 제일 큰 수를 찾음. 하지만 번호가 없이 NULL값이 나오면
+	현재 번호를 리턴시킴 --> 
+	<select id="selectAdminPrev" parameterType="Dboard" resultType="int">
+		SELECT NVL(MAX(D_NUM),#{dNum})
+		FROM DBOARD
+		WHERE 1=1
+		<if test="searchFiled != null and searchFiled !=''">
+			AND ${searchFiled} LIKE '%' || #{searchValue} || '%'
+		</if>
+		<if test="category != null and category !=''">
+			AND D_CATEGORY LIKE '%' || #{category} || '%'
+		</if>
+		<if test="local != null and local !=''">
+			AND D_LOCAL = #{local}
+		</if>
+		<![CDATA[
+		AND D_NUM < #{ dNum }
+		]]>
+		
+	</select>
+	
+	<insert id="insertDboard" parameterType="Dboard">
+		INSERT INTO DBOARD
+		VALUES (DBOARD_NUM_SEQ.NEXTVAL,
+			   #{ userId },
+			   #{ uniqueNum },
+			   #{ dWriter },
+			   #{ dTitle },
+			   #{ dContent },
+			   #{ dFindDate },
+			   #{ dFindLocal },
+			   #{ dGender },
+			   #{ dCategory },
+			   #{ dLocal },
+			   #{ dPhone },
+			   #{ dPoint },
+			   (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+			   (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+			   DEFAULT,
+			   #{ mapX },
+			   #{ mapY },
+			   DEFAULT,
+			   DEFAULT,
+			   #{ viewImage, jdbcType=VARCHAR},
+			   #{ listImage, jdbcType=VARCHAR})
+	</insert>
+	
+	<update id="updateDboard" parameterType="Dboard">
+		UPDATE DBOARD SET
+			   D_TITLE = #{ dTitle },
+			   D_CONTENT = #{ dContent },
+			   D_FIND_DATE = #{ dFindDate },
+			   D_FIND_LOCAL = #{ dFindLocal },
+			   D_GENDER = #{ dGender },
+			   D_CATEGORY = #{ dCategory },
+			   D_LOCAL = #{ dLocal },
+			   D_PHONE = #{ dPhone },
+			   D_POINT = #{ dPoint },
+			   D_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+			   MAP_X = #{ mapX },
+			   MAP_Y = #{ mapY },
+			   VIEW_IMAGE = #{ viewImage },
+			   LIST_IMAGE = #{ listImage }
+		WHERE D_NUM = #{ dNum }
+	</update>
+	
+	<update id="updateDboardHide" parameterType="Dboard">
+		UPDATE DBOARD SET
+			   D_CHECK = 'n',
+			   D_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL)
+		WHERE D_NUM = #{ dNum }
+	</update>
+	
+	<update id="updateDboardSuc" parameterType="Dboard">
+		UPDATE DBOARD SET
+		<if test='dSuccess.equals("y")'>
+			   D_SUCCESS = 'n',
+		</if>
+		<if test='dSuccess.equals("n")'>
+			   D_SUCCESS = 'y',
+		</if>
+		D_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL)
+		WHERE D_NUM = #{ dNum }	
+	</update>
+	
+	<!-- 게시물 표시 여부가 n이면 y를 y면 n을 대입 -->
+	<update id="updateAdminHide" parameterType="Dboard">
+		UPDATE DBOARD SET
+		D_MDATE = (SELECT TO_CHAR(SYSDATE, 'RRRR-MM-DD HH24:MI:SS') FROM DUAL),
+		D_CHECK =
+			CASE WHEN D_CHECK = 'n' THEN 'y'
+				ELSE 'n'
+			END
+		WHERE D_NUM IN
+		<foreach item="arr" collection= "array" open="(" close=")" separator=",">
+			#{arr}
+		</foreach>
+	</update>
+	
+	<update id="updateReadCount" parameterType="_int">
+		UPDATE DBOARD SET
+		D_COUNT = D_COUNT + 1
+		WHERE D_NUM = #{ dNum }
+	</update>
+	
+	<delete id="deleteDboard" parameterType="Dboard">
+		DELETE 
+		FROM DBOARD 
+		WHERE D_NUM = #{ dNum }
+	</delete>
+	
+</mapper>
