@@ -34,7 +34,7 @@
    + 신용카드 선택 시 아임포트로 구현한 이니시스 결제창 노출
 
 ## 포트폴리오
-[PDF 포트폴리오](https://drive.google.com/file/d/18TkvVzvGsQ9JerQOh7JYbcm6w7Tue6bF/view?usp=sharing)
+[PDF 포트폴리오](https://drive.google.com/file/d/1aHE6AHJsivhf5xHuwQCw3sDJpeY0EPIJ/view)
 
 ## 🛠 개발환경
 + &#128187; Java | JSP | Spring 3.9.13
